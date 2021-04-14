@@ -5,7 +5,7 @@ import com.example.nytimes.model.list_of_articles_dto.ArticleItemDto
 
 class ListOfArticlesDotToEntity {
     companion object {
-        fun ArticleItemDtoToEntity(data: ArticleItemDto): ArrayList<ArticleItemEntity> {
+        fun ArticleItemDtoToEntity(data: ArticleItemDto): List<ArticleItemEntity> {
 
             val finalList = arrayListOf<ArticleItemEntity>()
 
@@ -28,7 +28,7 @@ class ListOfArticlesDotToEntity {
                     )
                 )
             }
-            return finalList;
+            return finalList
         }
     }
 }
