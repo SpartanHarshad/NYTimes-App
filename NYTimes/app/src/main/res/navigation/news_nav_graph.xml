@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/news_nav_graph"
+    app:startDestination="@id/todayFragment">
+
+    <fragment
+        android:id="@+id/todayFragment"
+        android:name="com.example.nytimes.fragments.TodayFragment"
+        android:label="TodayFragment" >
+        <action
+            android:id="@+id/action_todayFragment_to_articleFragment2"
+            app:destination="@id/articleFragment2"
+           />
+    </fragment>
+    <fragment
+        android:id="@+id/covidFragment"
+        android:name="com.example.nytimes.fragments.CovidFragment"
+        android:label="CovidFragment" />
+    <fragment
+        android:id="@+id/forYouFragment"
+        android:name="com.example.nytimes.fragments.ForYouFragment"
+        android:label="ForYouFragment" >
+        <action
+            android:id="@+id/action_forYouFragment_to_articleFragment2"
+            app:destination="@id/articleFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/sectionFragment"
+        android:name="com.example.nytimes.fragments.SectionFragment"
+        android:label="SectionFragment" />
+    <fragment
+        android:id="@+id/articleFragment2"
+        android:name="com.example.nytimes.fragments.ArticleFragment"
+        android:label="ArticleFragment" />
+</navigation>
