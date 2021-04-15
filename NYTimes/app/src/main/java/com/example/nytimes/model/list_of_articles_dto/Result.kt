@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Result(
     @SerializedName("abstract")
-    var `abstract`: String?,
+    var abstract: String?,
     @SerializedName("byline")
     var byline: String?,
     @SerializedName("created_date")
