@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.MostPopularNewsFragment">
+    tools:context=".fragments.WorldNewsFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/rlTopBar"
@@ -20,7 +20,7 @@
             android:layout_margin="10dp">
 
             <ImageView
-                android:id="@+id/ivBackToSections"
+                android:id="@+id/ivBackToSection"
                 android:layout_width="30dp"
                 android:layout_height="20dp"
                 android:layout_margin="10dp"
@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:fontFamily="@font/font_chelt_sh_bold"
-                android:text="Most Popular"
+                android:text="World"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -41,7 +41,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvMostPopularNews"
+        android:id="@+id/rvWorldNews"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
@@ -53,5 +53,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/rlTopBar" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
-
+</FrameLayout>

@@ -38,6 +38,7 @@ android {
 }
 
 dependencies {
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     def jetpack_version = "2.1.0"
     def anko_version = '0.10.0'
     def lifecycle_version = "2.3.1"
