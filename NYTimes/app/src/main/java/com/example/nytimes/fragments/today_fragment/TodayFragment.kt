@@ -19,6 +19,7 @@ import com.example.nytimes.databinding.FragmentTodayBinding
 import com.example.nytimes.fragments.today_fragment.recycler_view_adapter.TodayRecyclerViewAdapter
 import com.example.nytimes.util.Resource
 import com.example.nytimes.viewmodels.TodayViewModel
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -49,11 +50,26 @@ class TodayFragment : Fragment(R.layout.fragment_today), RecyclerViewItemClickLi
 
     }
 
+    var startNetworkCheck = false;
     private fun setNetworkObserver() {
         Tovuti.from(context).monitor(object : Monitor.ConnectivityListener {
-            override fun onConnectivityChanged(connectionType: Int, isConnected: Boolean, isFast: Boolean) {
-              
-
+            override fun onConnectivityChanged(
+                connectionType: Int,
+                isConnected: Boolean,
+                isFast: Boolean
+            ) {
+                if (isConnected && startNetworkCheck) {
+                    Log.d("taggg", "network is back")
+                    viewModel.loadingAnimation.postValue(true)
+                    setObserver()
+                } else {
+                    Snackbar.make(
+                        binding.root,
+                        "No Internet",
+                        Snackbar.LENGTH_SHORT
+                    )
+                        .show()
+                }
             }
         })
     }
@@ -91,10 +107,19 @@ class TodayFragment : Fragment(R.layout.fragment_today), RecyclerViewItemClickLi
 
             //  binding.error.text = result.error?.localizedMessage ?: "yoyo"
 
+            if (result is Resource.Success) {
+                Snackbar.make(
+                    binding.root,
+                    "News Has been updated",
+                    Snackbar.LENGTH_SHORT
+                )
+                    .show()
+            }
+
+            startNetworkCheck = true
         })
 
     }
-
 
     override fun onDestroy() {
         super.onDestroy()
