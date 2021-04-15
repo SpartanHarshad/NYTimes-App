@@ -131,6 +131,15 @@ dependencies {
     testImplementation 'org.robolectric:robolectric:4.5.1'
     //glide dependencys
 
+    
+    // Retrofit & OkHttp
+    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
+    // This library is used by retrofit internally to convert json-pojo and pojo-json
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    //This library is used to observe the API logs, Http status code and the API response
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.12.3'
+
+
     // Navigation Components
     implementation "androidx.navigation:navigation-fragment-ktx:2.3.5"
     implementation "androidx.navigation:navigation-ui-ktx:2.3.5"
@@ -142,10 +151,12 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
 
+
     // jsoup HTML parser library @ https://jsoup.org/
     implementation 'org.jsoup:jsoup:1.13.1'
 
     implementation 'com.github.jumadeveloper:networkmanager:0.0.2'
+
 
 
 
