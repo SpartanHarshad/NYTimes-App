@@ -1,19 +1,20 @@
 package com.example.nytimes.viewmodels
 
+
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.example.nytimes.model.MostPopular
+import androidx.lifecycle.liveData
+import com.example.nytimes.model.Result
 import com.example.nytimes.repository.MostPopularNewsRepo
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
-class MostPopularNewsviewModel(val mostPopularNewsRepo: MostPopularNewsRepo) : ViewModel() {
 
-    fun getMostPopularNewsModel(): MostPopular {
-        var mostPopular = MostPopular()
-        CoroutineScope(Dispatchers.IO).launch {
-            mostPopular = mostPopularNewsRepo.getMostPopularNews()
+class MostPopularNewsviewModel(val newsRepository:MostPopularNewsRepo) : ViewModel() {
+
+    fun mostPopularNewsModel():LiveData<List<Result>> {
+        return liveData(Dispatchers.IO) {
+            val Result = newsRepository.getMostPopularNews()
+            emit(Result!!.results!!)
         }
-        return mostPopular
     }
 }

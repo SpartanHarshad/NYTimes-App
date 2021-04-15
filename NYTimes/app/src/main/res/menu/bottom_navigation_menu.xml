@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item android:id="@+id/todayFragment"
         android:title="Today"
-
         android:icon="@drawable/ic_nytimesicon"/>
+
     <item android:id="@+id/covidFragment"
         android:title="Covid-19"
         android:icon="@drawable/ic_graph_icon_png_oojs_ui_icon_graph_png"/>
+
     <item android:id="@+id/forYouFragment"
         android:title="For You"
         android:icon="@drawable/ic_foryouicon"/>
+
     <item android:id="@+id/sectionFragment"
         android:title="Sections"
         android:icon="@drawable/ic_th_large_512"/>
-
-
 
 </menu>

@@ -60,14 +60,49 @@ class SectionFragment : Fragment(), SectionOnClickListener {
     }
 
     override fun getSectionName(sections: Sections) {
-        var sectionName = sections.name
+        var sectionName = sections.icon.toString()
 
-        when(sectionName){
-            "Most Popular" ->{
-                val intent = Intent(context,MostPopularNewsActivity::class.java)
-                startActivity(intent)
+        when (sectionName) {
+            "2131165308" -> {
+                launchMostPopular()
+            }
+            "2131165329" -> {
+                launchWorld()
+            }
+            "2131165325" -> {
+                //launchUS()
+            }
+            "2131165317" -> {
+                //launchPolitics()
+            }
+            "2131165296" -> {
+                //launchBusiness()
+            }
+            "2131165320" -> {
+                //launchSports()
+            }
+            "2131165292" -> {
+                //launchArts()
+            }
+            "2131165315" -> {
+                //launchMagazine()
             }
         }
         Toast.makeText(context, "${sections.icon} Section Clicked", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun launchMostPopular() {
+        val fragmentTransaction = fragmentManager?.beginTransaction()
+        val mostPopularNewsFragment = MostPopularNewsFragment()
+        fragmentTransaction?.replace(
+            R.id.newsNavHostFragment, mostPopularNewsFragment, "mostPopularNewsFragment"
+        )?.addToBackStack("mostPopularNewsFragment")?.commit()
+    }
+
+    private fun launchWorld() {
+        val fragmentTransaction = fragmentManager?.beginTransaction()
+        val worldNewsFragment = WorldNewsFragment()
+        fragmentTransaction?.replace(R.id.newsNavHostFragment, worldNewsFragment, "worldNewsFragment"
+        )?.addToBackStack("worldNewsFragment")?.commit()
     }
 }

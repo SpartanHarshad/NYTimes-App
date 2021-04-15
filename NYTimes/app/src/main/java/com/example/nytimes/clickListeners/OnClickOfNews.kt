@@ -2,7 +2,7 @@ package com.example.nytimes.clickListeners
 
 import com.example.nytimes.model.Result
 
-interface OnClickOfMostPopularNews {
+interface OnClickOfNews {
 
     fun getMostPopularNews(result: Result)
 }
