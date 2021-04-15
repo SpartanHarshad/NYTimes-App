@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">NYTimes</string>
+    <string name="for_you">For You</string>
+    <string name="sections">Sections</string>
+    <string name="covid_19">Covid-19</string>
+    <string name="today">Today</string>
 </resources>
