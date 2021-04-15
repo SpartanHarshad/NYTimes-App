@@ -60,14 +60,21 @@ class SectionFragment : Fragment(), SectionOnClickListener {
     }
 
     override fun getSectionName(sections: Sections) {
-        var sectionName = sections.name
+        var sectionName = sections.icon.toString()
 
-        when(sectionName){
-            "Most Popular" ->{
-                val intent = Intent(context,MostPopularNewsActivity::class.java)
-                startActivity(intent)
+        when (sectionName) {
+            "2131165308" -> {
+                launchMostPopular()
             }
         }
         Toast.makeText(context, "${sections.icon} Section Clicked", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun launchMostPopular() {
+        val fragmentTransaction = fragmentManager?.beginTransaction()
+        val mostPopularNewsFragment = MostPopularNewsFragment()
+        fragmentTransaction?.replace(
+            R.id.newsNavHostFragment, mostPopularNewsFragment, "mostPopularNewsFragment"
+        )?.addToBackStack("mostPopularNewsFragment")?.commit()
     }
 }

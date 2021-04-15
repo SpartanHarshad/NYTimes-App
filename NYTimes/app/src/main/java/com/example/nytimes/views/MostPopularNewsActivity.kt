@@ -15,32 +15,10 @@ import com.example.nytimes.viewmodels.MostPopularNewsFactory
 import com.example.nytimes.viewmodels.MostPopularNewsviewModel
 import kotlinx.android.synthetic.main.activity_most_popular_news.*
 
-class MostPopularNewsActivity : AppCompatActivity(),OnClickOfMostPopularNews {
-
-    lateinit var mostPopularNewsAdapter: MostPopularNewsAdapter
-    lateinit var mostPopularNewsviewModel: MostPopularNewsviewModel
+class MostPopularNewsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_most_popular_news)
-        initViews()
-        setRecyclerData()
-    }
-
-    private fun initViews() {
-        val repo = MostPopularNewsRepo()
-        val factory = MostPopularNewsFactory(repo)
-        mostPopularNewsviewModel = ViewModelProviders.of(this,factory).get(MostPopularNewsviewModel::class.java)
-    }
-
-    private fun setRecyclerData() {
-        val results : List<Result> = mostPopularNewsviewModel.getMostPopularNewsModel().results!!
-        mostPopularNewsAdapter = MostPopularNewsAdapter(results,this)
-        rvMostPopularNews.layoutManager = LinearLayoutManager(this)
-        rvMostPopularNews.adapter = mostPopularNewsAdapter
-    }
-
-    override fun getMostPopularNews(result: Result) {
-        Toast.makeText(this,result.title,Toast.LENGTH_SHORT).show()
     }
 }

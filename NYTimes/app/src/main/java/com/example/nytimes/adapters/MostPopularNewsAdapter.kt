@@ -34,7 +34,7 @@ class MostPopularNewsViewHolder(val view: View, val onClickOfMostPopularNews: On
 
     fun setMostPopularNews(result: Result) {
         view.apply {
-            tvNewsNo.text = result.id.toString()
+            tvNewsNo.text = result.assetId.toString()
             tvMostNewsTitle.text = result.title
             tvMostNewsShortDesc.text = result.abstract
             tvMostUpdatedTime.text = result.updated
