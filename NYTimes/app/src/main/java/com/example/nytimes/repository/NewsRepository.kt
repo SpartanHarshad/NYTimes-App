@@ -9,21 +9,21 @@ import javax.inject.Inject
 
 class NewsRepository @Inject constructor(
     private val api: NewsApi,
-    private val db:NewsDatabase
-){
+    private val db: NewsDatabase
+) {
 
     private val newsDao = db.getDao()
 
-    fun getNews() = networkBoundResource(
+    fun getNews(topic: String) = networkBoundResource(
         query = {
-            newsDao.getAll()
+            newsDao.getAll(topic)
         },
         fetch = {
-            ListOfArticlesDotToEntity.ArticleItemDtoToEntity(api.getNews())
+            ListOfArticlesDotToEntity.ArticleItemDtoToEntity(api.getNews(topic), topic)
         },
-        saveFetchResult = {news ->
+        saveFetchResult = { news ->
             db.withTransaction {
-                newsDao.deleteAll()
+                newsDao.deleteAll(topic)
                 newsDao.insertItem(news)
             }
         }

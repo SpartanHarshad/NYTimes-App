@@ -10,14 +10,13 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface NewsDao {
 
-    @Query("SELECT * FROM newsTable")
-    fun getAll(): Flow<List<ArticleItemEntity>>
+    @Query("SELECT * FROM newsTable where type =:type")
+    fun getAll(type: String?): Flow<List<ArticleItemEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertItem(article: List<ArticleItemEntity>)
 
-    @Query("DELETE FROM newsTable")
-    suspend fun deleteAll()
-
+    @Query("DELETE FROM newsTable where type =:type")
+    suspend fun deleteAll(type: String?)
 
 }

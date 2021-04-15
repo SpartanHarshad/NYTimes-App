@@ -17,8 +17,12 @@ data class ArticleItemEntity(
     @ColumnInfo(name = "published_date") var published_date: String?,
     @ColumnInfo(name = "image_low") var image_low: String?,
     @ColumnInfo(name = "image_high") var image_high: String?,
+    @ColumnInfo(name = "abstract") var abstractt: String?,
+    @ColumnInfo(name = "type") var type: String?,
 ) {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     var id: Int? = null
+
+
 }

@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/news_nav_graph"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/news_nav_graph"
     app:startDestination="@id/todayFragment">
 
     <fragment
         android:id="@+id/todayFragment"
-        android:name="com.example.nytimes.fragments.TodayFragment"
+        android:name="com.example.nytimes.fragments.today_fragment.TodayFragment"
         android:label="TodayFragment" >
         <action
             android:id="@+id/action_todayFragment_to_articleFragment2"
             app:destination="@id/articleFragment2"
            />
+        <action
+            android:id="@+id/action_todayFragment_to_articelViewFragment"
+            app:destination="@id/articleViewFragment" />
     </fragment>
     <fragment
         android:id="@+id/covidFragment"
@@ -32,4 +37,13 @@
         android:id="@+id/articleFragment2"
         android:name="com.example.nytimes.fragments.ArticleFragment"
         android:label="ArticleFragment" />
+    <fragment
+        android:id="@+id/articleViewFragment"
+        android:name="com.example.nytimes.fragments.article_view_fragment.ArticleViewFragment"
+        android:label="fragment_articel_view"
+        tools:layout="@layout/fragment_articel_view" >
+        <argument
+            android:name="url"
+            app:argType="string" />
+    </fragment>
 </navigation>
