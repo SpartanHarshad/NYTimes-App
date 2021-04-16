@@ -45,6 +45,12 @@
         <action
             android:id="@+id/action_sectionFragment_to_politicsNewsFragment"
             app:destination="@id/politicsNewsFragment" />
+        <action
+            android:id="@+id/action_sectionFragment_to_businessNewsFragment"
+            app:destination="@id/businessNewsFragment" />
+        <action
+            android:id="@+id/action_sectionFragment_to_sportsFragment"
+            app:destination="@id/sportsFragment" />
     </fragment>
 
     <fragment
@@ -116,6 +122,33 @@
 
         <action
             android:id="@+id/action_politicsNewsFragment_to_sectionFragment"
+            app:destination="@id/sectionFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/businessNewsFragment"
+        android:name="com.example.nytimes.fragments.BusinessNewsFragment"
+        android:label="fragment_business_news"
+        tools:layout="@layout/fragment_business_news" >
+        <action
+            android:id="@+id/action_businessNewsFragment_to_articleViewFragment"
+            app:destination="@id/articleViewFragment" />
+        <action
+            android:id="@+id/action_businessNewsFragment_to_sectionFragment"
+            app:destination="@id/sectionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sportsFragment"
+        android:name="com.example.nytimes.fragments.SportsFragment"
+        android:label="fragment_sports"
+        tools:layout="@layout/fragment_sports" >
+
+        <action
+            android:id="@+id/action_sportsFragment_to_articleViewFragment"
+            app:destination="@id/articleViewFragment" />
+
+        <action
+            android:id="@+id/action_sportsFragment_to_sectionFragment"
             app:destination="@id/sectionFragment" />
 
     </fragment>
