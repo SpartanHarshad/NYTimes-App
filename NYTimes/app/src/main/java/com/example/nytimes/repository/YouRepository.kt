@@ -10,8 +10,6 @@ class  YouRepository(
     suspend fun getBreakingNews(countryCode: String, pageNumber: Int) =
             RetrofitInstance.api.getBreakingNews(countryCode, pageNumber)
 
-
-
     suspend fun upsert(article: Article)=db.getArticleDao().upsert(article)
 
     fun getSavedNews() =db.getArticleDao().getAllArticles()

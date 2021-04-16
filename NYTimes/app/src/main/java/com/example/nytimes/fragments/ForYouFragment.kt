@@ -17,7 +17,6 @@ import kotlinx.android.synthetic.main.fragment_foryou.*
 
 class ForYouFragment:Fragment(R.layout.fragment_foryou) {
 
-
     lateinit var viewModel: ForYouViewModel
     lateinit var newsAdapter: ForYouAdapter
 
@@ -33,7 +32,7 @@ class ForYouFragment:Fragment(R.layout.fragment_foryou) {
                 putSerializable("article", it)
             }
             findNavController().navigate(
-                    R.id.action_forYouFragment_to_articleFragment,bundle
+                    R.id.action_forYouFragment_to_articleFragment2,bundle
             )
         }
 

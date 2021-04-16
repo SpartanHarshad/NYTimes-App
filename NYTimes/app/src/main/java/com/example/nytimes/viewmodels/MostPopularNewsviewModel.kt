@@ -1,20 +1,23 @@
 package com.example.nytimes.viewmodels
 
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
-import com.example.nytimes.model.Result
+import androidx.lifecycle.*
+import com.example.nytimes.local.entity.ArticleItemEntity
 import com.example.nytimes.repository.MostPopularNewsRepo
-import kotlinx.coroutines.Dispatchers
+import com.example.nytimes.util.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
+@HiltViewModel
+class MostPopularNewsviewModel@Inject constructor(
+    var repository: MostPopularNewsRepo
+) : ViewModel() {
 
-class MostPopularNewsviewModel(val newsRepository:MostPopularNewsRepo) : ViewModel() {
+    //val news = repository.getNews().asLiveData()
 
-    fun mostPopularNewsModel():LiveData<List<Result>> {
-        return liveData(Dispatchers.IO) {
-            val Result = newsRepository.getMostPopularNews()
-            emit(Result!!.results!!)
-        }
+    fun getNews(topic: String): LiveData<Resource<List<ArticleItemEntity>>> {
+        return repository.getMostPopularNews(topic).asLiveData();
     }
+    val loadingAnimation = MutableLiveData<Boolean>(true)
+
 }

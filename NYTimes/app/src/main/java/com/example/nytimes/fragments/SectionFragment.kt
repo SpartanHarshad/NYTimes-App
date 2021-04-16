@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nytimes.R
 import com.example.nytimes.adapters.SectionAdapter
@@ -16,7 +17,6 @@ import com.example.nytimes.model.Sections
 import com.example.nytimes.repository.SectionRepository
 import com.example.nytimes.viewmodels.AllSectionsViewModel
 import com.example.nytimes.viewmodels.AllSectionsViewModelFactory
-import com.example.nytimes.views.MostPopularNewsActivity
 import kotlinx.android.synthetic.main.fragment_section.*
 
 
@@ -24,7 +24,7 @@ class SectionFragment : Fragment(), SectionOnClickListener {
 
     lateinit var sectionAdapter: SectionAdapter
     lateinit var sectionsViewModel: AllSectionsViewModel
-
+    var lists: List<Sections> = emptyList()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -48,12 +48,12 @@ class SectionFragment : Fragment(), SectionOnClickListener {
         val viewmodelFactory = AllSectionsViewModelFactory(repo)
         sectionsViewModel =
             ViewModelProviders.of(this, viewmodelFactory).get(AllSectionsViewModel::class.java)
+        lists = sectionsViewModel.allSectionsModel()
         setRecyclerData()
     }
 
     private fun setRecyclerData() {
-        var list = sectionsViewModel.allSectionsModel()
-        sectionAdapter = SectionAdapter(list, this)
+        sectionAdapter = SectionAdapter(lists, this)
         rvSection.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         rvSection.adapter = sectionAdapter
@@ -70,10 +70,10 @@ class SectionFragment : Fragment(), SectionOnClickListener {
                 launchWorld()
             }
             "2131165325" -> {
-                //launchUS()
+                launchUS()
             }
             "2131165317" -> {
-                //launchPolitics()
+                launchPolitics()
             }
             "2131165296" -> {
                 //launchBusiness()
@@ -92,17 +92,22 @@ class SectionFragment : Fragment(), SectionOnClickListener {
     }
 
     private fun launchMostPopular() {
-        val fragmentTransaction = fragmentManager?.beginTransaction()
-        val mostPopularNewsFragment = MostPopularNewsFragment()
-        fragmentTransaction?.replace(
-            R.id.newsNavHostFragment, mostPopularNewsFragment, "mostPopularNewsFragment"
-        )?.addToBackStack("mostPopularNewsFragment")?.commit()
+        val action = SectionFragmentDirections.actionSectionFragmentToHiltMostPopularNewsFragment()
+        Navigation.findNavController(requireView()).navigate(action)
     }
 
     private fun launchWorld() {
-        val fragmentTransaction = fragmentManager?.beginTransaction()
-        val worldNewsFragment = WorldNewsFragment()
-        fragmentTransaction?.replace(R.id.newsNavHostFragment, worldNewsFragment, "worldNewsFragment"
-        )?.addToBackStack("worldNewsFragment")?.commit()
+        val action = SectionFragmentDirections.actionSectionFragmentToWorldNewsFragment()
+        Navigation.findNavController(requireView()).navigate(action)
+    }
+
+    private fun launchUS() {
+        val action = SectionFragmentDirections.actionSectionFragmentToUSNewsFragment()
+        Navigation.findNavController(requireView()).navigate(action)
+    }
+
+    private fun launchPolitics() {
+        val action = SectionFragmentDirections.actionSectionFragmentToPoliticsNewsFragment()
+        Navigation.findNavController(requireView()).navigate(action)
     }
 }

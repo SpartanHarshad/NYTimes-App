@@ -31,14 +31,32 @@
         android:name="com.example.nytimes.fragments.ForYouFragment"
         android:label="ForYouFragment" >
         <action
+<<<<<<< HEAD
+            android:id="@+id/action_forYouFragment_to_articleFragment2"
+            app:destination="@id/articleViewFragment" />
+=======
             android:id="@+id/action_forYouFragment_to_articleFragment"
             app:destination="@id/articleFragment"/>
 
+>>>>>>> 1adedccfc8ca89fd018b10389d2d9f0e2b59d4fd
     </fragment>
     <fragment
         android:id="@+id/sectionFragment"
         android:name="com.example.nytimes.fragments.SectionFragment"
-        android:label="SectionFragment" />
+        android:label="SectionFragment" >
+        <action
+            android:id="@+id/action_sectionFragment_to_hilt_MostPopularNewsFragment"
+            app:destination="@id/MostPopularNewsFragment" />
+        <action
+            android:id="@+id/action_sectionFragment_to_worldNewsFragment"
+            app:destination="@id/worldNewsFragment" />
+        <action
+            android:id="@+id/action_sectionFragment_to_USNewsFragment"
+            app:destination="@id/USNewsFragment" />
+        <action
+            android:id="@+id/action_sectionFragment_to_politicsNewsFragment"
+            app:destination="@id/politicsNewsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/articleFragment"
         android:name="com.example.nytimes.fragments.ArticleFragment"
@@ -58,4 +76,53 @@
             app:argType="string" />
 
     </fragment>
+    <fragment
+        android:id="@+id/MostPopularNewsFragment"
+        android:name="com.example.nytimes.fragments.MostPopularNewsFragment"
+        android:label="@layout/fragment_most_popular_news" >
+        <action
+            android:id="@+id/action_MostPopularNewsFragment_to_articleViewFragment"
+            app:destination="@id/articleViewFragment" />
+        <action
+            android:id="@+id/action_MostPopularNewsFragment_to_sectionFragment"
+            app:destination="@id/sectionFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/worldNewsFragment"
+        android:name="com.example.nytimes.fragments.WorldNewsFragment"
+        android:label="fragment_world_news"
+        tools:layout="@layout/fragment_world_news" >
+        <action
+            android:id="@+id/action_worldNewsFragment_to_sectionFragment"
+            app:destination="@id/sectionFragment" />
+        <action
+            android:id="@+id/action_worldNewsFragment_to_articleViewFragment"
+            app:destination="@id/articleViewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/USNewsFragment"
+        android:name="com.example.nytimes.fragments.USNewsFragment"
+        android:label="fragment_u_s_news"
+        tools:layout="@layout/fragment_u_s_news" >
+        <action
+            android:id="@+id/action_USNewsFragment_to_sectionFragment"
+            app:destination="@id/sectionFragment" />
+        <action
+            android:id="@+id/action_USNewsFragment_to_articleViewFragment"
+            app:destination="@id/articleViewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/politicsNewsFragment"
+        android:name="com.example.nytimes.fragments.PoliticsNewsFragment"
+        android:label="fragment_politics_news"
+        tools:layout="@layout/fragment_politics_news" >
+        <action
+            android:id="@+id/action_politicsNewsFragment_to_sectionFragment"
+            app:destination="@id/sectionFragment" />
+        <action
+            android:id="@+id/action_politicsNewsFragment_to_articleViewFragment"
+            app:destination="@id/articleViewFragment" />
+    </fragment>
+
 </navigation>

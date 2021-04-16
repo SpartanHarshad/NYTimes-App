@@ -9,9 +9,15 @@
 
         android:icon="@drawable/ic_nytimesicon"/>
 
+<<<<<<< HEAD
+   <!-- <item android:id="@+id/covidFragment"
+        android:title="Covid-19"
+        android:icon="@drawable/ic_graph_icon_png_oojs_ui_icon_graph_png"/> -->
+=======
     <item android:id="@+id/covidFragment"
         android:title="@string/covid_19"
         android:icon="@drawable/ic_graph_icon_png_oojs_ui_icon_graph_png"/>
+>>>>>>> 1adedccfc8ca89fd018b10389d2d9f0e2b59d4fd
 
     <item android:id="@+id/forYouFragment"
         android:title="@string/for_you"
