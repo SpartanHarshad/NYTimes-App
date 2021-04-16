@@ -24,6 +24,7 @@ class SectionFragment : Fragment(), OnClickListener {
     lateinit var sectionAdapter: SectionAdapter
     lateinit var sectionsViewModel: AllSectionsViewModel
     var lists: List<Sections> = emptyList()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -75,10 +76,10 @@ class SectionFragment : Fragment(), OnClickListener {
                 launchPolitics()
             }
             "Business" -> {
-                //launchBusiness()
+                launchBusiness()
             }
             "Sports" -> {
-                //launchSports()
+                launchSports()
             }
             "Arts" -> {
                 //launchArts()
@@ -87,7 +88,7 @@ class SectionFragment : Fragment(), OnClickListener {
                 //launchMagazine()
             }
         }
-        Toast.makeText(context, "${sectionName} Section Clicked", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(context, "${sectionName} Section Clicked", Toast.LENGTH_SHORT).show()
     }
 
     private fun launchMostPopular() {
@@ -107,6 +108,16 @@ class SectionFragment : Fragment(), OnClickListener {
 
     private fun launchPolitics() {
         val action = SectionFragmentDirections.actionSectionFragmentToPoliticsNewsFragment()
+        Navigation.findNavController(requireView()).navigate(action)
+    }
+
+    private fun launchBusiness() {
+        val action = SectionFragmentDirections.actionSectionFragmentToBusinessNewsFragment()
+        Navigation.findNavController(requireView()).navigate(action)
+    }
+
+    private fun launchSports() {
+        val action = SectionFragmentDirections.actionSectionFragmentToSportsFragment()
         Navigation.findNavController(requireView()).navigate(action)
     }
 }

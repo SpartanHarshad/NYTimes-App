@@ -12,34 +12,35 @@ import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nytimes.R
+import com.example.nytimes.adapters.NewsAdapter
 import com.example.nytimes.adapters.WorldNewsAdapter
 import com.example.nytimes.clickListeners.OnClickOfNews
 import com.example.nytimes.local.entity.ArticleItemEntity
 import com.example.nytimes.util.Resource
-import com.example.nytimes.viewmodels.WorldNewsViewModel
+import com.example.nytimes.viewmodels.NewsViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.fragment_business_news.*
 import kotlinx.android.synthetic.main.fragment_world_news.*
 
 @AndroidEntryPoint
-class WorldNewsFragment : Fragment(),OnClickOfNews {
+class BusinessNewsFragment : Fragment(), OnClickOfNews {
 
-    lateinit var worldNewsAdapter: WorldNewsAdapter
-    val worldNewsViewModel: WorldNewsViewModel by viewModels();
-    var worldnews = mutableListOf<ArticleItemEntity>()
+    lateinit var newsAdapter: NewsAdapter
+    val newsViewModel:NewsViewModel by viewModels()
+    var news = mutableListOf<ArticleItemEntity>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_world_news, container, false)
+        return inflater.inflate(R.layout.fragment_business_news, container, false)
     }
 
     companion object {
-        fun newInstance(): MostPopularNewsFragment {
-            return MostPopularNewsFragment()
+        fun newInstance(): BusinessNewsFragment {
+            return BusinessNewsFragment()
         }
     }
 
@@ -47,40 +48,34 @@ class WorldNewsFragment : Fragment(),OnClickOfNews {
         super.onViewCreated(view, savedInstanceState)
         setRecyclerData()
         observNews()
-        ivBackToSection.setOnClickListener {
+        ivBackToSectionBis.setOnClickListener {
             launchSections()
         }
     }
 
     private fun setRecyclerData() {
-        worldNewsAdapter = WorldNewsAdapter(worldnews,this)
-        rvWorldNews.layoutManager = LinearLayoutManager(context)
-        rvWorldNews.adapter = worldNewsAdapter
+        newsAdapter = NewsAdapter(news,this)
+        rvBusinessNews.layoutManager = LinearLayoutManager(context)
+        rvBusinessNews.adapter = newsAdapter
     }
 
     private fun observNews() {
-        worldNewsViewModel.worldNewsModel("world").observe(viewLifecycleOwner, Observer{ result ->
-            worldnews.clear()
-            worldnews.addAll(result.data!!)
-            worldNewsAdapter.notifyDataSetChanged()
-            Log.d("taggg", "${(result.data?.size ?: 0)}");
-
-            //binding.progressBar.isVisible =
+        newsViewModel.getNews("Business").observe(viewLifecycleOwner, Observer{ result ->
+            news.clear()
+            news.addAll(result.data!!)
+            newsAdapter.notifyDataSetChanged()
             result is Resource.Loading && result.data.isNullOrEmpty()
-            //viewModel.loadingAnimation.postValue(result is Resource.Loading && result.data.isNullOrEmpty())
-
-            //  binding.error.text = result.error?.localizedMessage ?: "yoyo"
         })
     }
 
     private fun launchSections() {
-        val action = WorldNewsFragmentDirections.actionWorldNewsFragmentToSectionFragment()
+        val action = BusinessNewsFragmentDirections.actionBusinessNewsFragmentToSectionFragment()
         Navigation.findNavController(requireView()).navigate(action)
     }
 
     override fun getNews(result: ArticleItemEntity) {
-        val action = WorldNewsFragmentDirections.actionWorldNewsFragmentToArticleViewFragment(result.url!!)
-         Navigation.findNavController(requireView()).navigate(action)
+       val action = BusinessNewsFragmentDirections.actionBusinessNewsFragmentToArticleViewFragment(result.url!!)
+        Navigation.findNavController(requireView()).navigate(action)
     }
 
     override fun forwardNews(url: String) {
