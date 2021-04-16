@@ -4,23 +4,17 @@ import android.os.Bundle
 import android.view.View
 import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.example.nytimes.R
-import com.example.nytimes.api.Resource
-import com.example.nytimes.model.Article
-import com.example.nytimes.model.NewsResponse
 import com.example.nytimes.viewmodels.ForYouViewModel
-import com.example.nytimes.views.ForYouAdapter
 import com.example.nytimes.views.MainActivity
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_article.*
 
-class ArticleFragment: Fragment(R.layout.fragment_article) {
+class ArticleFragment : Fragment(R.layout.fragment_article) {
     lateinit var viewModel: ForYouViewModel
 //    lateinit var forYouAdapter: ForYouAdapter
-   // val foryouNews: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
+    // val foryouNews: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
 
     val args: ArticleFragmentArgs by navArgs()
 
@@ -33,14 +27,14 @@ class ArticleFragment: Fragment(R.layout.fragment_article) {
             loadUrl(article.url)
         }
 
-fab.setOnClickListener {
-    viewModel.saveArticle(article)
-    Snackbar.make(view,"Article saved", Snackbar.LENGTH_SHORT).show()
-}
+        fab.setOnClickListener {
+            viewModel.saveArticle(article)
+            Snackbar.make(view, "Article saved", Snackbar.LENGTH_SHORT).show()
+        }
 
-       // viewModel.getSavedNews().observe(viewLifecycleOwner, Observer { article->
+        // viewModel.getSavedNews().observe(viewLifecycleOwner, Observer { article->
 //            forYouAdapter.differ.submitList(article)
-       // })
+        // })
 
     }
 

@@ -6,12 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nytimes.R
-import com.example.nytimes.clickListeners.SectionOnClickListener
+import com.example.nytimes.clickListeners.OnClickListener
 import com.example.nytimes.model.Sections
 import kotlinx.android.synthetic.main.section_items.view.*
 
 class SectionAdapter(
-    val sectionList: List<Sections>, val sectionOnClickListener: SectionOnClickListener
+    val sectionList: List<Sections>, val sectionOnClickListener: OnClickListener
 ) : RecyclerView.Adapter<SectionViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SectionViewHolder {
@@ -30,7 +30,7 @@ class SectionAdapter(
     }
 }
 
-class SectionViewHolder(val view: View, val sectionOnClickListener: SectionOnClickListener) :
+class SectionViewHolder(val view: View, val sectionOnClickListener: OnClickListener) :
     RecyclerView.ViewHolder(view) {
 
     fun setSections(sections: Sections) {

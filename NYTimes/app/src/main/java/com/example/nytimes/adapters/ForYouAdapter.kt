@@ -1,4 +1,4 @@
-package com.example.nytimes.views
+package com.example.nytimes.adapters
 
 import android.view.LayoutInflater
 import android.view.View
