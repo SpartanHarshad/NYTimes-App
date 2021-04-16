@@ -1,8 +1,9 @@
 package com.example.nytimes.clickListeners
 
-import com.example.nytimes.model.Result
+import com.example.nytimes.local.entity.ArticleItemEntity
 
 interface OnClickOfNews {
 
-    fun getMostPopularNews(result: Result)
+    fun getNews(result: ArticleItemEntity)
+    fun forwardNews(url: String)
 }

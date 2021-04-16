@@ -5,9 +5,9 @@
         android:title="Today"
         android:icon="@drawable/ic_nytimesicon"/>
 
-    <item android:id="@+id/covidFragment"
+   <!-- <item android:id="@+id/covidFragment"
         android:title="Covid-19"
-        android:icon="@drawable/ic_graph_icon_png_oojs_ui_icon_graph_png"/>
+        android:icon="@drawable/ic_graph_icon_png_oojs_ui_icon_graph_png"/> -->
 
     <item android:id="@+id/forYouFragment"
         android:title="For You"

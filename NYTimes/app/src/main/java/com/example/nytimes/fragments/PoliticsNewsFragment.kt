@@ -7,27 +7,28 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nytimes.R
-import com.example.nytimes.adapters.MostPopularNewsAdapter
+import com.example.nytimes.adapters.PoliticsNewAdapter
+import com.example.nytimes.adapters.USNewsAdapter
 import com.example.nytimes.clickListeners.OnClickOfNews
-import com.example.nytimes.fragments.article_view_fragment.ArticleViewFragment
 import com.example.nytimes.local.entity.ArticleItemEntity
 import com.example.nytimes.util.Resource
-import com.example.nytimes.viewmodels.MostPopularNewsviewModel
+import com.example.nytimes.viewmodels.PoliticsViewModel
+import com.example.nytimes.viewmodels.USNewsViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_most_popular_news.*
+import kotlinx.android.synthetic.main.fragment_politics_news.*
+import kotlinx.android.synthetic.main.fragment_u_s_news.*
 
 @AndroidEntryPoint
-class MostPopularNewsFragment : Fragment(), OnClickOfNews {
+class PoliticsNewsFragment : Fragment(), OnClickOfNews {
 
-    lateinit var mostPopularNewsAdapter: MostPopularNewsAdapter
-     val mostPopularNewsviewModel: MostPopularNewsviewModel by viewModels();
-    var results = mutableListOf<ArticleItemEntity>()
+    val politicsViewModel: PoliticsViewModel by viewModels()
+    var politicsNews = mutableListOf<ArticleItemEntity>()
+    lateinit var politicNewAdapter: PoliticsNewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,13 +38,13 @@ class MostPopularNewsFragment : Fragment(), OnClickOfNews {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        return inflater.inflate(R.layout.fragment_most_popular_news, container, false)
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_politics_news, container, false)
     }
 
     companion object {
-        fun newInstance(): MostPopularNewsFragment {
-            return MostPopularNewsFragment()
+        fun newInstance(): PoliticsNewsFragment {
+            return PoliticsNewsFragment()
         }
     }
 
@@ -51,40 +52,35 @@ class MostPopularNewsFragment : Fragment(), OnClickOfNews {
         super.onViewCreated(view, savedInstanceState)
         setRecyclerData()
         observNews()
-        ivBackToSections.setOnClickListener {
+        ivBackToSection2.setOnClickListener {
             launchSections()
         }
     }
 
     private fun setRecyclerData() {
-        mostPopularNewsAdapter = MostPopularNewsAdapter(results, this)
-        rvMostPopularNews.layoutManager = LinearLayoutManager(context)
-        rvMostPopularNews.adapter = mostPopularNewsAdapter
+        politicNewAdapter = PoliticsNewAdapter(politicsNews,this)
+        rvPoliticsNews.layoutManager = LinearLayoutManager(context)
+        rvPoliticsNews.adapter = politicNewAdapter
     }
 
     private fun observNews() {
-        mostPopularNewsviewModel.getNews("mostpopular").observe(viewLifecycleOwner, Observer { result ->
-            results.clear()
-            results.addAll(result.data!!)
-            mostPopularNewsAdapter.notifyDataSetChanged()
-            Log.d("taggg", "${(result.data?.size ?: 0)}");
-
-            //binding.progressBar.isVisible =
-                result is Resource.Loading && result.data.isNullOrEmpty()
-            //viewModel.loadingAnimation.postValue(result is Resource.Loading && result.data.isNullOrEmpty())
-
-            //  binding.error.text = result.error?.localizedMessage ?: "yoyo"
-
+        politicsViewModel.polNewsModel("politics").observe(viewLifecycleOwner, Observer {result->
+            politicsNews.clear()
+            politicsNews.addAll(result.data!!)
+            //Log.d("politics", "observNews: ${result.data!!}")
+            politicNewAdapter.notifyDataSetChanged()
+            result is Resource.Loading && result.data.isNullOrEmpty()
         })
     }
 
     private fun launchSections() {
-        val action = MostPopularNewsFragmentDirections.actionMostPopularNewsFragmentToSectionFragment()
+        val action = PoliticsNewsFragmentDirections.actionPoliticsNewsFragmentToSectionFragment()
         Navigation.findNavController(requireView()).navigate(action)
     }
 
     override fun getNews(result: ArticleItemEntity) {
-        val action = MostPopularNewsFragmentDirections.actionMostPopularNewsFragmentToArticleViewFragment(result.url!!)
+        val action =
+            PoliticsNewsFragmentDirections.actionPoliticsNewsFragmentToArticleViewFragment(result.url!!)
         Navigation.findNavController(requireView()).navigate(action)
     }
 
@@ -92,13 +88,12 @@ class MostPopularNewsFragment : Fragment(), OnClickOfNews {
         forwardNewsOnSocialMedia(url)
     }
 
-    fun forwardNewsOnSocialMedia(url:String){
+    fun forwardNewsOnSocialMedia(url: String) {
         val sendIntent: Intent = Intent().apply {
             action = Intent.ACTION_SEND
             putExtra(Intent.EXTRA_TEXT, url)
             type = "text/plain"
         }
-
         val shareIntent = Intent.createChooser(sendIntent, "Forward")
         startActivity(shareIntent)
     }
