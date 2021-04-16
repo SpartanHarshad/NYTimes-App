@@ -75,13 +75,13 @@ class WorldNewsFragment : Fragment(),OnClickOfNews {
     }
 
     private fun launchSections() {
-        val action = WorldNewsFragmentDirections.actionWorldNewsFragmentToSectionFragment()
-        Navigation.findNavController(requireView()).navigate(action)
+       // val action = WorldNewsFragmentDirections.actionWorldNewsFragmentToSectionFragment2()
+        //Navigation.findNavController(requireView()).navigate(action)
     }
 
     override fun getNews(result: ArticleItemEntity) {
-        val action = WorldNewsFragmentDirections.actionWorldNewsFragmentToArticleViewFragment(result.url!!)
-         Navigation.findNavController(requireView()).navigate(action)
+       // val action = WorldNewsFragmentDirections.actionWorldNewsFragmentToArticleViewFragment2(result.url!!)
+       //  Navigation.findNavController(requireView()).navigate(action)
     }
 
     override fun forwardNews(url: String) {

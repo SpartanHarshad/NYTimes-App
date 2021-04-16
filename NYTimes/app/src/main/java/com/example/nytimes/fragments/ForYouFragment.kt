@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nytimes.R
 import com.example.nytimes.api.Resource
 import com.example.nytimes.viewmodels.ForYouViewModel
-import com.example.nytimes.views.ForYouAdapter
+import com.example.nytimes.adapters.ForYouAdapter
 import com.example.nytimes.views.MainActivity
 import kotlinx.android.synthetic.main.fragment_foryou.*
 
