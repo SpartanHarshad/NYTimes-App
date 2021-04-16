@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "883766340718",
+    "project_id": "nytimes-f39ea",
+    "storage_bucket": "nytimes-f39ea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:883766340718:android:f4ea116c78cd3d2647ca7f",
+        "android_client_info": {
+          "package_name": "com.example.nytimes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "883766340718-1i8gjqp9moerolad30d2k8n1r9r4i59l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxXLRujVtp7nxWPtO-TWFScbJ_C22vjr4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "883766340718-1i8gjqp9moerolad30d2k8n1r9r4i59l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
