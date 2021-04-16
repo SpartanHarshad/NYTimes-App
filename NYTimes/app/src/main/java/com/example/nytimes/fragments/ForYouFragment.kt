@@ -33,7 +33,7 @@ class ForYouFragment:Fragment(R.layout.fragment_foryou) {
                 putSerializable("article", it)
             }
             findNavController().navigate(
-                    R.id.action_forYouFragment_to_articleFragment,bundle
+                    R.id.action_forYouFragment_to_articleFragment2,bundle
             )
         }
 

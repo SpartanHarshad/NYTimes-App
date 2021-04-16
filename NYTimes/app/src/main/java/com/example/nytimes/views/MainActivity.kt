@@ -13,13 +13,14 @@ import com.example.nytimes.viewmodels.ForYouViewModel
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.nytimes.R
+
 import dagger.hilt.android.AndroidEntryPoint
 
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.text.Typography.dagger
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() 
+class MainActivity : AppCompatActivity() {
     lateinit var viewModel: ForYouViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,8 +30,11 @@ class MainActivity : AppCompatActivity()
 
         val youRepository = YouRepository(ForYouDatabase(this))
         val viewModelProviderFactory = ForViewModelProviderFactory(youRepository)
-        viewModel = ViewModelProvider(this, viewModelProviderFactory).get(ForYouViewModel::class.java)
+        viewModel =
+            ViewModelProvider(this, viewModelProviderFactory).get(ForYouViewModel::class.java)
 
         bottomNavigationView.setupWithNavController(newsNavHostFragment.findNavController())
     }
 }
+
+

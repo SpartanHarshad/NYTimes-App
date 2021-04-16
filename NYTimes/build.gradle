@@ -13,6 +13,7 @@ buildscript {
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
+        classpath 'com.google.gms:google-services:4.3.3'
         //safe args
         def nav_version = "2.3.3"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"

@@ -5,7 +5,7 @@
 
         android:title="@string/today"
 
-        android:title="Today"
+
 
         android:icon="@drawable/ic_nytimesicon"/>
 
