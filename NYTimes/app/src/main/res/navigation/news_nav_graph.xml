@@ -7,6 +7,10 @@
 
     <fragment
         android:id="@+id/todayFragment"
+
+        android:name="com.example.nytimes.fragments.TodayFragment"
+        android:label="TodayFragment" />
+
         android:name="com.example.nytimes.fragments.today_fragment.TodayFragment"
         android:label="TodayFragment" >
         <action
@@ -17,6 +21,7 @@
             android:id="@+id/action_todayFragment_to_articelViewFragment"
             app:destination="@id/articleViewFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/covidFragment"
         android:name="com.example.nytimes.fragments.CovidFragment"
@@ -26,8 +31,14 @@
         android:name="com.example.nytimes.fragments.ForYouFragment"
         android:label="ForYouFragment" >
         <action
+<<<<<<< HEAD
             android:id="@+id/action_forYouFragment_to_articleFragment2"
             app:destination="@id/articleViewFragment" />
+=======
+            android:id="@+id/action_forYouFragment_to_articleFragment"
+            app:destination="@id/articleFragment"/>
+
+>>>>>>> 1adedccfc8ca89fd018b10389d2d9f0e2b59d4fd
     </fragment>
     <fragment
         android:id="@+id/sectionFragment"
@@ -47,8 +58,13 @@
             app:destination="@id/politicsNewsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/articleFragment2"
+        android:id="@+id/articleFragment"
         android:name="com.example.nytimes.fragments.ArticleFragment"
+        android:label="ArticleFragment" >
+        <argument
+            android:name="Article"
+            app:argType="com.example.nytimes.model.Article" />
+
         android:label="ArticleFragment" />
     <fragment
         android:id="@+id/articleViewFragment"
@@ -58,6 +74,7 @@
         <argument
             android:name="url"
             app:argType="string" />
+
     </fragment>
     <fragment
         android:id="@+id/MostPopularNewsFragment"

@@ -2,19 +2,29 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/todayFragment"
+
+        android:title="@string/today"
+
         android:title="Today"
+
         android:icon="@drawable/ic_nytimesicon"/>
 
+<<<<<<< HEAD
    <!-- <item android:id="@+id/covidFragment"
         android:title="Covid-19"
         android:icon="@drawable/ic_graph_icon_png_oojs_ui_icon_graph_png"/> -->
+=======
+    <item android:id="@+id/covidFragment"
+        android:title="@string/covid_19"
+        android:icon="@drawable/ic_graph_icon_png_oojs_ui_icon_graph_png"/>
+>>>>>>> 1adedccfc8ca89fd018b10389d2d9f0e2b59d4fd
 
     <item android:id="@+id/forYouFragment"
-        android:title="For You"
+        android:title="@string/for_you"
         android:icon="@drawable/ic_foryouicon"/>
 
     <item android:id="@+id/sectionFragment"
-        android:title="Sections"
+        android:title="@string/sections"
         android:icon="@drawable/ic_th_large_512"/>
 
 </menu>
