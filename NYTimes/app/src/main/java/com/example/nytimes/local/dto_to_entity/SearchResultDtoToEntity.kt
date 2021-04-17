@@ -6,11 +6,11 @@ import com.example.nytimes.model.search_result_dto.SearchResultDto
 
 class SearchResultDtoToEntity {
     companion object {
-        fun ArticleItemDtoToEntity(data: SearchResultDto?, type: String): List<ArticleItemEntity> {
+        fun ArticleItemDtoToEntity(data: SearchResultDto?, type: String): List<ArticleItemEntity>? {
 
             val finalList = arrayListOf<ArticleItemEntity>()
 
-            if (data != null) {
+            /*if (data != null) {
                 for (article in data.response?.docs!!) {
 
                     Log.d("taggg", "${(data.response?.docs?.size ?: 0)}")
@@ -37,11 +37,35 @@ class SearchResultDtoToEntity {
                         )
                     }
                 }
+            }*/
+
+            Log.d("asdas", "${finalList.size}")
+
+
+
+           return data!!.response?.docs?.map {
+                var name = "thingg"
+                if (it.headline != null && it.headline!!.main != null) {
+                    name = it.headline!!.main!!
+                }
+
+                ArticleItemEntity(
+                    subsection =" it.subsectionName",
+                    title = name,
+                    abstractt = it.abstract,
+                    url = it.webUrl,
+                    uri = it.uri,
+                    byline = it.byline?.original,
+                    item_type = it.newsDesk,
+                    updated_date = it.pubDate,
+                    created_date = it.pubDate,
+                    published_date = it.pubDate,
+                    image_low = "sdfs",
+                    image_high = "article.multimedia?.get(0)?.url",
+                    type = type
+                )
             }
 
-            Log.d("asdas","${finalList.size}")
-
-            return finalList
         }
     }
 }

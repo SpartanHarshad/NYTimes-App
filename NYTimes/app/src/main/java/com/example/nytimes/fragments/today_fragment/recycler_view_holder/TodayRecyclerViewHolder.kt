@@ -16,6 +16,7 @@ class TodayRecyclerViewHolder(
 
         binding.tvHeading.text = article.title
         binding.tvDescription.text = article.abstractt
+        binding.tvByLine.text = article.byline
         Glide.with(binding.root).load(article.image_high).into(binding.imageView)
 
         binding.layout.setOnClickListener {

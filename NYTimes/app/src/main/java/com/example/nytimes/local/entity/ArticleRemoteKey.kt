@@ -8,8 +8,7 @@ data class ArticleRemoteKey(
     @PrimaryKey(autoGenerate = false)
     val id: String,
     val prev: Int?,
-    val next: Int?,
-    val type: String?,
+    val next: Int?
 ) {
 
 

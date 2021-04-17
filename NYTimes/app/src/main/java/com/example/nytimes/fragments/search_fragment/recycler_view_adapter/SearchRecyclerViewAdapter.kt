@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
+
 import com.example.nytimes.databinding.SearchItemLayoutBinding
 import com.example.nytimes.fragments.search_fragment.recycler_view_holder.SearchRecyclerVIewHolder
 import com.example.nytimes.local.entity.ArticleItemEntity

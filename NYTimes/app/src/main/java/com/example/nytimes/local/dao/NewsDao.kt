@@ -15,7 +15,7 @@ interface NewsDao {
     @Query("SELECT * FROM newsTable where type =:type")
     fun getAll(type: String?): Flow<List<ArticleItemEntity>>
 
-    @Query("SELECT * FROM newsTable where title LIKE :type or type =:type")
+    @Query("SELECT * FROM newsTable where type =:type")
     fun getAllSearch(type: String): PagingSource<Int, ArticleItemEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -30,7 +30,7 @@ interface NewsDao {
     @Query("SELECT * FROM ArticleRemoteKey WHERE id= :id")
     suspend fun getAllRemoteKey(id: String): ArticleRemoteKey?
 
-    @Query("DELETE FROM ArticleRemoteKey where type = :type")
-    suspend fun deleteAllRemoteKey(type: String)
+    @Query("DELETE FROM ArticleRemoteKey")
+    suspend fun deleteAllRemoteKey()
 
 }

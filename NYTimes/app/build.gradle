@@ -152,7 +152,7 @@ dependencies {
     testImplementation 'org.robolectric:robolectric:4.5.1'
     //glide dependencys
 
-    
+
     // Retrofit & OkHttp
     implementation 'com.squareup.retrofit2:retrofit:2.6.0'
     // This library is used by retrofit internally to convert json-pojo and pojo-json
@@ -180,8 +180,8 @@ dependencies {
 
     implementation 'com.github.delight-im:Android-AdvancedWebView:v3.2.1'
 
+    def paging_version = '3.0.0-beta03'
 
-    def paging_version = "3.0.0-beta02"
 
     implementation "androidx.paging:paging-runtime:$paging_version"
 

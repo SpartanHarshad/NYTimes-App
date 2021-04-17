@@ -58,21 +58,23 @@ class NewsRemoteMediator(
 
                 if (loadType == LoadType.REFRESH) {
                     newsDao.deleteAll(type) //here
-                    newsDao.deleteAllRemoteKey(type) //here
+                    newsDao.deleteAllRemoteKey() //here
                 }
 
                 val prev = if (page == initialPage) null else page - 1
                 val next = if (endOfPagination) null else page + 1
 
                 val list = response.body()?.response?.docs?.map {
-                    ArticleRemoteKey(it.headline!!.main!!, prev, next, type)
+                    ArticleRemoteKey(it.headline!!.main!!, prev, next)
                 }
 
                 if (list != null) {
                     newsDao.insertAllRemoteKey(list) // here
                 }
 
-                newsDao.insertItem(finalList)
+                if (finalList != null) {
+                    newsDao.insertItem(finalList)
+                }
 
                 MediatorResult.Success(endOfPagination)
             } else {
