@@ -16,10 +16,7 @@
         <action
             android:id="@+id/action_todayFragment_to_articelViewFragment"
             app:destination="@id/articleViewFragment" />
-        <action
-            android:id="@+id/action_todayFragment_to_articleFragment2"
-            app:destination="@id/articleFragment2"
-            />
+
 
     </fragment>
 
