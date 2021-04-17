@@ -12,7 +12,7 @@ class ListOfArticlesDotToEntity {
 
             for (article in data.results!!) {
 
-                Log.d("taggg", "${(data.results?.size ?: 0) }");
+                Log.d("tag", "${(data.results?.size ?: 0) }");
 
                 article.title?.let {
                     ArticleItemEntity(

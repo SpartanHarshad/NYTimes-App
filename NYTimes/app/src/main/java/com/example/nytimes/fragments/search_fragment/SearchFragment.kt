@@ -111,5 +111,4 @@ class SearchFragment : Fragment(), RecyclerViewItemClickListener {
         Navigation.findNavController(binding.root).navigate(action)
     }
 
-
 }

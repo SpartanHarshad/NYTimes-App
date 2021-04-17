@@ -3,7 +3,6 @@ package com.example.nytimes.fragments
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,23 +12,20 @@ import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nytimes.R
-import com.example.nytimes.adapters.PoliticsNewAdapter
-import com.example.nytimes.adapters.USNewsAdapter
+import com.example.nytimes.adapters.NewsAdapter
 import com.example.nytimes.clickListeners.OnClickOfNews
 import com.example.nytimes.local.entity.ArticleItemEntity
 import com.example.nytimes.util.Resource
-import com.example.nytimes.viewmodels.PoliticsViewModel
-import com.example.nytimes.viewmodels.USNewsViewModel
+import com.example.nytimes.viewmodels.NewsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_politics_news.*
-import kotlinx.android.synthetic.main.fragment_u_s_news.*
 
 @AndroidEntryPoint
 class PoliticsNewsFragment : Fragment(), OnClickOfNews {
 
-    val politicsViewModel: PoliticsViewModel by viewModels()
-    var politicsNews = mutableListOf<ArticleItemEntity>()
-    lateinit var politicNewAdapter: PoliticsNewAdapter
+    lateinit var newsAdapter: NewsAdapter
+    val newsViewModel: NewsViewModel by viewModels()
+    var news = mutableListOf<ArticleItemEntity>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,17 +55,16 @@ class PoliticsNewsFragment : Fragment(), OnClickOfNews {
     }
 
     private fun setRecyclerData() {
-        politicNewAdapter = PoliticsNewAdapter(politicsNews,this)
+        newsAdapter = NewsAdapter(news,this)
         rvPoliticsNews.layoutManager = LinearLayoutManager(context)
-        rvPoliticsNews.adapter = politicNewAdapter
+        rvPoliticsNews.adapter = newsAdapter
     }
 
     private fun observNews() {
-        politicsViewModel.polNewsModel("politics").observe(viewLifecycleOwner, Observer {result->
-            politicsNews.clear()
-            politicsNews.addAll(result.data!!)
-            //Log.d("politics", "observNews: ${result.data!!}")
-            politicNewAdapter.notifyDataSetChanged()
+        newsViewModel.getNews("politics").observe(viewLifecycleOwner, Observer {result->
+            news.clear()
+            news.addAll(result.data!!)
+            newsAdapter.notifyDataSetChanged()
             result is Resource.Loading && result.data.isNullOrEmpty()
         })
     }

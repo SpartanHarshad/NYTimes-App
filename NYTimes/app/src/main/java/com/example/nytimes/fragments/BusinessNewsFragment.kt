@@ -14,7 +14,6 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nytimes.R
 import com.example.nytimes.adapters.NewsAdapter
-import com.example.nytimes.adapters.WorldNewsAdapter
 import com.example.nytimes.clickListeners.OnClickOfNews
 import com.example.nytimes.local.entity.ArticleItemEntity
 import com.example.nytimes.util.Resource

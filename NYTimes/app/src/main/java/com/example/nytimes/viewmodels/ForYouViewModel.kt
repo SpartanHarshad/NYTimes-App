@@ -10,9 +10,7 @@ import com.example.nytimes.repository.YouRepository
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
-class ForYouViewModel(
-        val youRepository: YouRepository
-) : ViewModel() {
+class ForYouViewModel(val youRepository: YouRepository) : ViewModel() {
 
     val foryouNews: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
     var foryouNewsPage = 1
@@ -36,7 +34,7 @@ class ForYouViewModel(
         return Resource.Error(response.message())
     }
 
-    fun saveArticle(article: Article)= viewModelScope.launch {
+    fun saveArticle(article: Article) = viewModelScope.launch {
         youRepository.upsert(article)
     }
     fun getSavedNews()= youRepository.getSavedNews()

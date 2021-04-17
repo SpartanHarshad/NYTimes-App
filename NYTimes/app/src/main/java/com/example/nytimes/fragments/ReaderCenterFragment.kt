@@ -1,7 +1,6 @@
 package com.example.nytimes.fragments
 
 import android.content.Intent
-import android.graphics.Bitmap
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -18,10 +17,12 @@ import com.example.nytimes.local.entity.ArticleItemEntity
 import com.example.nytimes.util.Resource
 import com.example.nytimes.viewmodels.NewsViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_world_news.*
+import kotlinx.android.synthetic.main.fragment_magazine.*
+import kotlinx.android.synthetic.main.fragment_magazine.ivBackToSectionMagzin
+import kotlinx.android.synthetic.main.fragment_reader_center.*
 
 @AndroidEntryPoint
-class WorldNewsFragment : Fragment(),OnClickOfNews {
+class ReaderCenterFragment : Fragment(),OnClickOfNews {
 
     lateinit var newsAdapter: NewsAdapter
     val newsViewModel: NewsViewModel by viewModels()
@@ -31,15 +32,17 @@ class WorldNewsFragment : Fragment(),OnClickOfNews {
         super.onCreate(savedInstanceState)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_world_news, container, false)
+        return inflater.inflate(R.layout.fragment_reader_center, container, false)
     }
 
     companion object {
-        fun newInstance(): MostPopularNewsFragment {
-            return MostPopularNewsFragment()
+        fun newInstance(): ReaderCenterFragment {
+            return ReaderCenterFragment()
         }
     }
 
@@ -47,19 +50,19 @@ class WorldNewsFragment : Fragment(),OnClickOfNews {
         super.onViewCreated(view, savedInstanceState)
         setRecyclerData()
         observNews()
-        ivBackToSection.setOnClickListener {
+        ivBackToSectionReader.setOnClickListener {
             launchSections()
         }
     }
 
     private fun setRecyclerData() {
         newsAdapter = NewsAdapter(news,this)
-        rvWorldNews.layoutManager = LinearLayoutManager(context)
-        rvWorldNews.adapter = newsAdapter
+        rvReaderCenterNews.layoutManager = LinearLayoutManager(context)
+        rvReaderCenterNews.adapter = newsAdapter
     }
 
     private fun observNews() {
-        newsViewModel.getNews("world").observe(viewLifecycleOwner, Observer{ result ->
+        newsViewModel.getNews("insider").observe(viewLifecycleOwner, Observer{ result ->
             news.clear()
             news.addAll(result.data!!)
             newsAdapter.notifyDataSetChanged()
@@ -68,16 +71,16 @@ class WorldNewsFragment : Fragment(),OnClickOfNews {
     }
 
     private fun launchSections() {
-        val action = WorldNewsFragmentDirections.actionWorldNewsFragmentToSectionFragment()
+        val action = ReaderCenterFragmentDirections.actionReaderCenterFragmentToSectionFragment()
         Navigation.findNavController(requireView()).navigate(action)
     }
 
     override fun getNews(result: ArticleItemEntity) {
-        val action = WorldNewsFragmentDirections.actionWorldNewsFragmentToArticleViewFragment(result.url!!)
-         Navigation.findNavController(requireView()).navigate(action)
+        val action = ReaderCenterFragmentDirections.actionReaderCenterFragmentToArticleViewFragment(result.url!!)
+        Navigation.findNavController(requireView()).navigate(action)
     }
 
-    override fun forwardNews(url: String, image: Bitmap?) {
+    override fun forwardNews(url: String) {
         forwardNewsOnSocialMedia(url)
     }
 
@@ -87,7 +90,9 @@ class WorldNewsFragment : Fragment(),OnClickOfNews {
             putExtra(Intent.EXTRA_TEXT, url)
             type = "text/plain"
         }
+
         val shareIntent = Intent.createChooser(sendIntent, "Forward")
         startActivity(shareIntent)
     }
+
 }

@@ -1,10 +1,10 @@
 package com.example.nytimes.fragments
 
-import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.os.StrictMode
 import android.util.Log
 import android.view.LayoutInflater
@@ -16,10 +16,11 @@ import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nytimes.R
-import com.example.nytimes.adapters.MostPopularNewAdapter
+import com.example.nytimes.adapters.NewsAdapter
 import com.example.nytimes.clickListeners.OnClickOfNews
 import com.example.nytimes.local.entity.ArticleItemEntity
 import com.example.nytimes.util.Resource
+import com.example.nytimes.viewmodels.NewsViewModel
 import com.example.nytimes.viewmodels.MostPopularNewsviewModel
 import com.robertsimoes.shareable.Shareable
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,9 +33,9 @@ import java.io.IOException
 @AndroidEntryPoint
 class MostPopularNewsFragment : Fragment(), OnClickOfNews {
 
-    lateinit var mostPopularNewsAdapter: MostPopularNewAdapter
-    val mostPopularNewsviewModel: MostPopularNewsviewModel by viewModels();
-    var results = mutableListOf<ArticleItemEntity>()
+    lateinit var newsAdapter: NewsAdapter
+    val newsViewModel: NewsViewModel by viewModels()
+    var news = mutableListOf<ArticleItemEntity>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,30 +69,27 @@ class MostPopularNewsFragment : Fragment(), OnClickOfNews {
     }
 
     private fun setRecyclerData() {
-        mostPopularNewsAdapter = MostPopularNewAdapter(results, this)
+        newsAdapter = NewsAdapter(news, this)
         rvMostPopularNews.layoutManager = LinearLayoutManager(context)
-        rvMostPopularNews.adapter = mostPopularNewsAdapter
+        rvMostPopularNews.adapter = newsAdapter
     }
 
     private fun observNews() {
-        mostPopularNewsviewModel.getNews("mostpopular").observe(
+        newsViewModel.getMostPopularNews("mostpopular").observe(
             viewLifecycleOwner,
             Observer { result ->
-                results.clear()
-                results.addAll(result.data!!)
-                mostPopularNewsAdapter.notifyDataSetChanged()
-                Log.d("taggg", "${(result.data?.size ?: 0)}");
+                news.clear()
+                news.addAll(result.data!!)
+                newsAdapter.notifyDataSetChanged()
 
-                //binding.progressBar.isVisible =
                 result is Resource.Loading && result.data.isNullOrEmpty()
-                //viewModel.loadingAnimation.postValue(result is Resource.Loading && result.data.isNullOrEmpty())
 
-                //  binding.error.text = result.error?.localizedMessage ?: "yoyo"
 
             })
     }
 
     private fun launchSections() {
+
         val action =
             MostPopularNewsFragmentDirections.actionMostPopularNewsFragmentToSectionFragment()
         Navigation.findNavController(requireView()).navigate(action)
@@ -122,11 +120,11 @@ class MostPopularNewsFragment : Fragment(), OnClickOfNews {
             e.printStackTrace()
         }
 
+    fun forwardNewsOnSocialMedia(url: String) {
 
         val sendIntent: Intent = Intent().apply {
             action = Intent.ACTION_SEND
             putExtra(Intent.EXTRA_TEXT, url)
-
             type = "text/plain"
         }
 
