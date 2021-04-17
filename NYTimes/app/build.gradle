@@ -166,5 +166,9 @@ dependencies {
     // Jetpack Compose Integration
     implementation "androidx.paging:paging-compose:1.0.0-alpha08"
 
+    compile 'com.github.robertsimoes:Shareable:0.1.0'
+
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
 
 }

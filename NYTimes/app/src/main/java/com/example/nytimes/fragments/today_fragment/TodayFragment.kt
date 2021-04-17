@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -58,18 +57,18 @@ class TodayFragment : Fragment(R.layout.fragment_today), RecyclerViewItemClickLi
                 isConnected: Boolean,
                 isFast: Boolean
             ) {
-                if (isConnected && startNetworkCheck) {
-                    Log.d("taggg", "network is back")
-                    viewModel.loadingAnimation.postValue(true)
-                    setObserver()
-                } else {
-                    Snackbar.make(
+                /* if (isConnected && startNetworkCheck) {
+                     Log.d("taggg", "network is back")
+                     viewModel.loadingAnimation.postValue(true)
+                     setObserver()
+                 } else {
+                    *//* Snackbar.make(
                         binding.root,
                         "No Internet",
                         Snackbar.LENGTH_SHORT
                     )
-                        .show()
-                }
+                        .show()*//*
+                }*/
             }
         })
     }
@@ -101,8 +100,8 @@ class TodayFragment : Fragment(R.layout.fragment_today), RecyclerViewItemClickLi
             todayAdapter.updateList(result.data)
             Log.d("taggg", "${(result.data?.size ?: 0)}")
 
-            binding.progressBar.isVisible =
-                result is Resource.Loading && result.data.isNullOrEmpty()
+            /* binding.progressBar.isVisible =
+                 result is Resource.Loading && result.data.isNullOrEmpty()*/
             viewModel.loadingAnimation.postValue(result is Resource.Loading && result.data.isNullOrEmpty())
 
             //  binding.error.text = result.error?.localizedMessage ?: "yoyo"

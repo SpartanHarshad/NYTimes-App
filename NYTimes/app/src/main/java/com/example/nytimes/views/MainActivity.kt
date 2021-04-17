@@ -23,9 +23,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val youRepository = YouRepository(ForYouDatabase(this))
+        /*val youRepository = YouRepository(ForYouDatabase(this))
         val viewModelProviderFactory = ForViewModelProviderFactory(youRepository)
-        viewModel = ViewModelProvider(this, viewModelProviderFactory).get(ForYouViewModel::class.java)
+        viewModel = ViewModelProvider(this, viewModelProviderFactory).get(ForYouViewModel::class.java)*/
 
         bottomNavigationView.setupWithNavController(newsNavHostFragment.findNavController())
     }

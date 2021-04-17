@@ -1,6 +1,7 @@
 package com.example.nytimes.fragments
 
 import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.text.Html
 import android.util.Log
@@ -89,7 +90,7 @@ class USNewsFragment : Fragment(),OnClickOfNews {
         Navigation.findNavController(requireView()).navigate(action)
     }
 
-    override fun forwardNews(url: String) {
+    override fun forwardNews(url: String, image: Bitmap?) {
         //Toast.makeText(context,"New Forward $url",Toast.LENGTH_SHORT).show()
         forwardNewsOnSocialMedia(url)
     }

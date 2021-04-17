@@ -9,9 +9,11 @@ import com.bumptech.glide.Glide
 import com.example.nytimes.R
 import com.example.nytimes.clickListeners.OnClickOfNews
 import com.example.nytimes.local.entity.ArticleItemEntity
+import com.example.nytimes.util.BitMapCreator
 import kotlinx.android.synthetic.main.news_item_layout.view.*
 
-class MostPopularNewAdapter(val mostPopularNewsList: List<ArticleItemEntity>, val onClickOfMostPopularNews: OnClickOfNews
+class MostPopularNewAdapter(
+    val mostPopularNewsList: List<ArticleItemEntity>, val onClickOfMostPopularNews: OnClickOfNews
 ) : RecyclerView.Adapter<MostPopularNewsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MostPopularNewsViewHolder {
@@ -22,7 +24,7 @@ class MostPopularNewAdapter(val mostPopularNewsList: List<ArticleItemEntity>, va
 
     override fun onBindViewHolder(holder: MostPopularNewsViewHolder, position: Int) {
         val result: ArticleItemEntity = mostPopularNewsList[position]
-        holder.setMostPopularNews(result,position)
+        holder.setMostPopularNews(result, position)
     }
 
     override fun getItemCount(): Int {
@@ -30,10 +32,11 @@ class MostPopularNewAdapter(val mostPopularNewsList: List<ArticleItemEntity>, va
     }
 }
 
-class MostPopularNewsViewHolder(val view: View, val onClickOfMostPopularNews: OnClickOfNews
+class MostPopularNewsViewHolder(
+    val view: View, val onClickOfMostPopularNews: OnClickOfNews
 ) : RecyclerView.ViewHolder(view) {
 
-    fun setMostPopularNews(result: ArticleItemEntity, position:Int) {
+    fun setMostPopularNews(result: ArticleItemEntity, position: Int) {
         view.apply {
             tvNewsNo.text = "${position}."
             tvMostNewsTitle.text = result.title
@@ -45,10 +48,12 @@ class MostPopularNewsViewHolder(val view: View, val onClickOfMostPopularNews: On
                 .load(result.image_low)
                 .into(ivMostNewsImg)
             ivMostForward.setOnClickListener {
-                onClickOfMostPopularNews.forwardNews(result.url!!)
+
+
+                onClickOfMostPopularNews.forwardNews(result.url!!, BitMapCreator.ViewShot(view))
             }
             ivMostSave.setOnClickListener {
-                Toast.makeText(context,"News Saved Offline", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "News Saved Offline", Toast.LENGTH_SHORT).show()
             }
         }
 

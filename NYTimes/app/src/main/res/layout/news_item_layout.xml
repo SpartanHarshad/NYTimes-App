@@ -3,11 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp">
+    android:layout_margin="5dp"
+    android:background="@color/white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         android:layout_margin="5dp">
 
         <TextView
@@ -24,52 +26,52 @@
             android:id="@+id/clMostPopularNews"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="horizontal"
+            android:paddingLeft="6dp"
+            android:weightSum="3"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toRightOf="@id/tvNewsNo"
             app:layout_constraintRight_toRightOf="parent"
-            android:orientation="horizontal"
-            android:weightSum="3"
-            android:paddingLeft="6dp"
-            android:layout_margin="5dp">
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="2">
+                android:layout_weight="2"
+                android:orientation="vertical">
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_row="0"
+                    android:layout_rowSpan="1"
+                    android:layout_column="0"
+                    android:layout_columnSpan="1"
+                    android:layout_columnWeight="1"
                     android:layout_margin="5dp"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:layout_row="0"
-                    android:layout_columnSpan="1"
-                    android:layout_rowSpan="1"
-                    android:layout_columnWeight="1"
-                    android:layout_column="0">
+                    android:paddingRight="10dp">
 
                     <TextView
                         android:id="@+id/tvMostNewsTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/font_chelt_bold"
                         android:text="hello title"
-                        android:textSize="20sp"
                         android:textColor="@color/black"
-                        android:fontFamily="@font/font_chelt_bold"/>
+                        android:textSize="20sp" />
 
                     <TextView
                         android:id="@+id/tvMostNewsShortDesc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/tvMostNewsTitle"
-                        android:text="hello short desc"
-                        android:textSize="15sp"
                         android:layout_marginTop="5dp"
+                        android:fontFamily="@font/font_chelt_light"
+                        android:text="hello short desc"
                         android:textColor="@color/black"
-                        android:fontFamily="@font/font_chelt_light"/>
+                        android:textSize="15sp" />
                 </RelativeLayout>
 
             </LinearLayout>
@@ -77,20 +79,20 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/ivMostNewsImg"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_row="0"
-                   android:scaleType="fitXY"
                     android:layout_rowWeight="1"
                     android:layout_column="1"
                     android:layout_columnWeight="1"
                     android:layout_margin="10dp"
                     android:paddingRight="10dp"
+                    android:scaleType="fitXY"
                     android:src="@drawable/ic_arts"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -110,10 +112,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
+                android:fontFamily="@font/font_chelt_light"
                 android:paddingLeft="10dp"
                 android:text="time"
                 android:textColor="@color/black"
-                android:fontFamily="@font/font_chelt_light"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -122,10 +124,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="10dp"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
                 android:src="@drawable/ic_forward"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -135,10 +137,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="10dp"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
                 android:src="@drawable/ic_bookmark"
                 app:layout_constraintRight_toLeftOf="@id/ivMostForward"
                 app:layout_constraintTop_toTopOf="parent" />

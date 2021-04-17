@@ -1,6 +1,7 @@
 package com.example.nytimes.fragments
 
 import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -75,7 +76,7 @@ class SportsFragment : Fragment(), OnClickOfNews {
         Navigation.findNavController(requireView()).navigate(action)
     }
 
-    override fun forwardNews(url: String) {
+    override fun forwardNews(url: String, image: Bitmap?) {
         forwardNewsOnSocialMedia(url)
     }
 
