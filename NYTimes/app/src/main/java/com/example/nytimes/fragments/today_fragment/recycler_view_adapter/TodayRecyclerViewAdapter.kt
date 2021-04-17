@@ -10,7 +10,7 @@ import com.example.nytimes.local.entity.ArticleItemEntity
 
 class TodayRecyclerViewAdapter(
     var list: List<ArticleItemEntity>?,
-    val clickListener: RecyclerViewItemClickListener
+    private val clickListener: RecyclerViewItemClickListener
 ) :
     RecyclerView.Adapter<TodayRecyclerViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodayRecyclerViewHolder {

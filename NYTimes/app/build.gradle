@@ -93,7 +93,9 @@ dependencies {
     //Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutineVersion"
+
     def room_version = "2.2.6"
+
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     // optional - Kotlin Extensions and Coroutines support for Room
@@ -122,6 +124,7 @@ dependencies {
     androidTestCompile "android.arch.core:core-testing:1.1.1"
     testImplementation 'org.robolectric:robolectric:4.5.1'
     //glide dependencys
+
     // Retrofit & OkHttp
     implementation 'com.squareup.retrofit2:retrofit:2.6.0'
     // This library is used by retrofit internally to convert json-pojo and pojo-json
@@ -139,4 +142,29 @@ dependencies {
     // jsoup HTML parser library @ https://jsoup.org/
     implementation 'org.jsoup:jsoup:1.13.1'
     implementation 'com.github.jumadeveloper:networkmanager:0.0.2'
+
+
+    implementation 'com.github.delight-im:Android-AdvancedWebView:v3.2.1'
+
+    def paging_version = '3.0.0-beta03'
+
+
+    implementation "androidx.paging:paging-runtime:$paging_version"
+
+    // alternatively - without Android dependencies for tests
+    testImplementation "androidx.paging:paging-common:$paging_version"
+
+    // optional - RxJava2 support
+    implementation "androidx.paging:paging-rxjava2:$paging_version"
+
+    // optional - RxJava3 support
+    implementation "androidx.paging:paging-rxjava3:$paging_version"
+
+    // optional - Guava ListenableFuture support
+    implementation "androidx.paging:paging-guava:$paging_version"
+
+    // Jetpack Compose Integration
+    implementation "androidx.paging:paging-compose:1.0.0-alpha08"
+
+
 }

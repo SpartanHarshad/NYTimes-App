@@ -14,10 +14,10 @@ class ListOfArticlesDotToEntity {
 
                 Log.d("taggg", "${(data.results?.size ?: 0) }");
 
-                finalList.add(
+                article.title?.let {
                     ArticleItemEntity(
                         subsection = article.subsection,
-                        title = article.title,
+                        title = it,
                         abstractt = article.abstract,
                         url = article.url,
                         uri = article.uri,
@@ -30,7 +30,11 @@ class ListOfArticlesDotToEntity {
                         image_high = article.multimedia?.get(0)?.url,
                         type = type
                     )
-                )
+                }?.let {
+                    finalList.add(
+                        it
+                    )
+                }
             }
             return finalList
         }

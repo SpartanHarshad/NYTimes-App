@@ -1,6 +1,11 @@
 package com.example.nytimes.repository
 
+import android.util.Log
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.liveData
 import androidx.room.withTransaction
+import com.example.nytimes.fragments.search_fragment.paging.NewsPagingSource
 import com.example.nytimes.local.database.NewsDatabase
 import com.example.nytimes.local.dto_to_entity.ListOfArticlesDotToEntity
 import com.example.nytimes.remote.network.NewsApi
@@ -28,5 +33,26 @@ class NewsRepository @Inject constructor(
             }
         }
     )
+
+    fun searchInCache(query: String) = Pager(
+        config = PagingConfig(
+            pageSize = 10,
+            maxSize = 100,
+            enablePlaceholders = false
+        )
+    ) {
+        Log.d("ddd","")
+        newsDao.searchInCache("%$query%")
+    }.liveData
+
+    fun getSearchResults(query: String) =
+        Pager(
+            config = PagingConfig(
+                pageSize = 10,
+                maxSize = 100,
+                enablePlaceholders = false
+            ),
+            pagingSourceFactory = { NewsPagingSource(news = api, query) }
+        ).liveData
 
 }

@@ -29,7 +29,7 @@ class TodayFragment : Fragment(R.layout.fragment_today), RecyclerViewItemClickLi
     private var _binding: FragmentTodayBinding? = null
     private val binding get() = _binding!!
 
-    val viewModel: TodayViewModel by viewModels();
+    val viewModel: TodayViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -99,7 +99,7 @@ class TodayFragment : Fragment(R.layout.fragment_today), RecyclerViewItemClickLi
     private fun setObserver() {
         viewModel.getNews("home").observe(viewLifecycleOwner, Observer { result ->
             todayAdapter.updateList(result.data)
-            Log.d("taggg", "${(result.data?.size ?: 0)}");
+            Log.d("taggg", "${(result.data?.size ?: 0)}")
 
             binding.progressBar.isVisible =
                 result is Resource.Loading && result.data.isNullOrEmpty()
