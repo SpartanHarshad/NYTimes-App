@@ -2,7 +2,6 @@ package com.example.nytimes.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,28 +17,32 @@ import com.example.nytimes.local.entity.ArticleItemEntity
 import com.example.nytimes.util.Resource
 import com.example.nytimes.viewmodels.NewsViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_business_news.*
-import kotlinx.android.synthetic.main.fragment_world_news.*
+import kotlinx.android.synthetic.main.fragment_health.*
+import kotlinx.android.synthetic.main.fragment_technology.*
+import kotlinx.android.synthetic.main.fragment_technology.rvTechnologyNews
 
 @AndroidEntryPoint
-class BusinessNewsFragment : Fragment(), OnClickOfNews {
+class HealthFragment : Fragment(),OnClickOfNews {
 
     lateinit var newsAdapter: NewsAdapter
-    val newsViewModel:NewsViewModel by viewModels()
+    val newsViewModel: NewsViewModel by viewModels()
     var news = mutableListOf<ArticleItemEntity>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_business_news, container, false)
+        return inflater.inflate(R.layout.fragment_health, container, false)
     }
 
     companion object {
-        fun newInstance(): BusinessNewsFragment {
-            return BusinessNewsFragment()
+        fun newInstance(): HealthFragment {
+            return HealthFragment()
         }
     }
 
@@ -47,19 +50,19 @@ class BusinessNewsFragment : Fragment(), OnClickOfNews {
         super.onViewCreated(view, savedInstanceState)
         setRecyclerData()
         observNews()
-        ivBackToSectionBis.setOnClickListener {
+        ivBackToSectionsHealth.setOnClickListener {
             launchSections()
         }
     }
 
     private fun setRecyclerData() {
-        newsAdapter = NewsAdapter(news,this)
-        rvBusinessNews.layoutManager = LinearLayoutManager(context)
-        rvBusinessNews.adapter = newsAdapter
+        newsAdapter = NewsAdapter(news, this)
+        rvHealthNews.layoutManager = LinearLayoutManager(context)
+        rvHealthNews.adapter = newsAdapter
     }
 
     private fun observNews() {
-        newsViewModel.getNews("Business").observe(viewLifecycleOwner, Observer{ result ->
+        newsViewModel.getNews("Health").observe(viewLifecycleOwner, Observer { result ->
             news.clear()
             news.addAll(result.data!!)
             newsAdapter.notifyDataSetChanged()
@@ -68,12 +71,12 @@ class BusinessNewsFragment : Fragment(), OnClickOfNews {
     }
 
     private fun launchSections() {
-        val action = BusinessNewsFragmentDirections.actionBusinessNewsFragmentToSectionFragment()
+        val action = HealthFragmentDirections.actionHealthFragmentToSectionFragment()
         Navigation.findNavController(requireView()).navigate(action)
     }
 
     override fun getNews(result: ArticleItemEntity) {
-       val action = BusinessNewsFragmentDirections.actionBusinessNewsFragmentToArticleViewFragment(result.url!!)
+        val action = HealthFragmentDirections.actionHealthFragmentToArticleViewFragment(result.url!!)
         Navigation.findNavController(requireView()).navigate(action)
     }
 
@@ -81,12 +84,13 @@ class BusinessNewsFragment : Fragment(), OnClickOfNews {
         forwardNewsOnSocialMedia(url)
     }
 
-    fun forwardNewsOnSocialMedia(url:String){
+    fun forwardNewsOnSocialMedia(url: String) {
         val sendIntent: Intent = Intent().apply {
             action = Intent.ACTION_SEND
             putExtra(Intent.EXTRA_TEXT, url)
             type = "text/plain"
         }
+
         val shareIntent = Intent.createChooser(sendIntent, "Forward")
         startActivity(shareIntent)
     }

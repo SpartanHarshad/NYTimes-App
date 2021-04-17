@@ -2,7 +2,6 @@ package com.example.nytimes.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,20 +11,20 @@ import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nytimes.R
-import com.example.nytimes.adapters.WorldNewsAdapter
+import com.example.nytimes.adapters.NewsAdapter
 import com.example.nytimes.clickListeners.OnClickOfNews
 import com.example.nytimes.local.entity.ArticleItemEntity
 import com.example.nytimes.util.Resource
-import com.example.nytimes.viewmodels.WorldNewsViewModel
+import com.example.nytimes.viewmodels.NewsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_world_news.*
 
 @AndroidEntryPoint
 class WorldNewsFragment : Fragment(),OnClickOfNews {
 
-    lateinit var worldNewsAdapter: WorldNewsAdapter
-    val worldNewsViewModel: WorldNewsViewModel by viewModels();
-    var worldnews = mutableListOf<ArticleItemEntity>()
+    lateinit var newsAdapter: NewsAdapter
+    val newsViewModel: NewsViewModel by viewModels()
+    var news = mutableListOf<ArticleItemEntity>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,23 +52,17 @@ class WorldNewsFragment : Fragment(),OnClickOfNews {
     }
 
     private fun setRecyclerData() {
-        worldNewsAdapter = WorldNewsAdapter(worldnews,this)
+        newsAdapter = NewsAdapter(news,this)
         rvWorldNews.layoutManager = LinearLayoutManager(context)
-        rvWorldNews.adapter = worldNewsAdapter
+        rvWorldNews.adapter = newsAdapter
     }
 
     private fun observNews() {
-        worldNewsViewModel.worldNewsModel("world").observe(viewLifecycleOwner, Observer{ result ->
-            worldnews.clear()
-            worldnews.addAll(result.data!!)
-            worldNewsAdapter.notifyDataSetChanged()
-            Log.d("taggg", "${(result.data?.size ?: 0)}");
-
-            //binding.progressBar.isVisible =
+        newsViewModel.getNews("world").observe(viewLifecycleOwner, Observer{ result ->
+            news.clear()
+            news.addAll(result.data!!)
+            newsAdapter.notifyDataSetChanged()
             result is Resource.Loading && result.data.isNullOrEmpty()
-            //viewModel.loadingAnimation.postValue(result is Resource.Loading && result.data.isNullOrEmpty())
-
-            //  binding.error.text = result.error?.localizedMessage ?: "yoyo"
         })
     }
 

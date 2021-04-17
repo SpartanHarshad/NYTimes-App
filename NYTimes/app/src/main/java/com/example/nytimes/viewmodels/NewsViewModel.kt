@@ -1,5 +1,6 @@
 package com.example.nytimes.viewmodels
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -16,6 +17,15 @@ class NewsViewModel @Inject constructor(var repository: NewsRepository) : ViewMo
     fun getNews(topic: String): LiveData<Resource<List<ArticleItemEntity>>> {
         return repository.getNews(topic).asLiveData();
     }
+
+    fun getMostPopularNews(topic: String): LiveData<Resource<List<ArticleItemEntity>>> {
+        return repository.getMostPopularNews(topic).asLiveData();
+    }
+
+   /* fun searchNews(topic: String): LiveData<Resource<List<ArticleItemEntity>>> {
+        Log.d("reader", "searchNews: "+repository.searchNews(topic))
+        return repository.searchNews(topic).asLiveData();
+    }*/
 
     val loadingAnimation = MutableLiveData<Boolean>(true)
 

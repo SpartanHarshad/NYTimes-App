@@ -32,6 +32,7 @@ class NewsHolder(val view: View, val onClickOfNews: OnClickOfNews):RecyclerView.
 
     fun setNews(articleItemEntity: ArticleItemEntity) {
         view.apply {
+            //tvNewsNo.text = "${position}."
             tvMostNewsTitle.text = articleItemEntity.title
             tvMostNewsShortDesc.text = articleItemEntity.abstractt
             tvMostUpdatedTime.text = "New York Times"
