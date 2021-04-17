@@ -1,5 +1,6 @@
 package com.example.nytimes.repository
 
+import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.liveData
@@ -32,6 +33,17 @@ class NewsRepository @Inject constructor(
             }
         }
     )
+
+    fun searchInCache(query: String) = Pager(
+        config = PagingConfig(
+            pageSize = 10,
+            maxSize = 100,
+            enablePlaceholders = false
+        )
+    ) {
+        Log.d("ddd","")
+        newsDao.searchInCache("%$query%")
+    }.liveData
 
     fun getSearchResults(query: String) =
         Pager(

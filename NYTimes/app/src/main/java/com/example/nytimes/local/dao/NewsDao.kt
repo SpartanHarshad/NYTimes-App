@@ -1,5 +1,7 @@
 package com.example.nytimes.local.dao
 
+import androidx.lifecycle.LiveData
+import androidx.paging.PagingData
 import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Insert
@@ -17,6 +19,9 @@ interface NewsDao {
 
     @Query("SELECT * FROM newsTable where type =:type")
     fun getAllSearch(type: String): PagingSource<Int, ArticleItemEntity>
+
+    @Query("SELECT * FROM newsTable where title like :type")
+    fun searchInCache(type: String): PagingSource<Int, ArticleItemEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertItem(article: List<ArticleItemEntity>)

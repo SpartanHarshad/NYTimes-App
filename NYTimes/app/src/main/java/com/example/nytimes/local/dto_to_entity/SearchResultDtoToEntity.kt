@@ -42,15 +42,16 @@ class SearchResultDtoToEntity {
             Log.d("asdas", "${finalList.size}")
 
 
-
-           return data!!.response?.docs?.map {
+            //https://static01.nyt.com/
+            return data!!.response?.docs?.map {
                 var name = "thingg"
                 if (it.headline != null && it.headline!!.main != null) {
                     name = it.headline!!.main!!
                 }
+                var imageUrl = "dfd"
 
                 ArticleItemEntity(
-                    subsection =" it.subsectionName",
+                    subsection = " it.subsectionName",
                     title = name,
                     abstractt = it.abstract,
                     url = it.webUrl,
@@ -60,8 +61,8 @@ class SearchResultDtoToEntity {
                     updated_date = it.pubDate,
                     created_date = it.pubDate,
                     published_date = it.pubDate,
-                    image_low = "sdfs",
-                    image_high = "article.multimedia?.get(0)?.url",
+                    image_low = if (it.multimedia.isNullOrEmpty()) "nan" else "https://static01.nyt.com/" + it.multimedia!![0].url,
+                    image_high = if (it.multimedia.isNullOrEmpty()) "nan" else "https://static01.nyt.com/" + it.multimedia!![0].url,
                     type = type
                 )
             }

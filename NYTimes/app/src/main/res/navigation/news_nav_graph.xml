@@ -49,5 +49,9 @@
         android:id="@+id/searchFragment"
         android:name="com.example.nytimes.fragments.search_fragment.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_searchFragment_to_articleViewFragment"
+            app:destination="@id/articleViewFragment" />
+    </fragment>
 </navigation>

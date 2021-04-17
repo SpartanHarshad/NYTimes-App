@@ -4,12 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
+import com.example.nytimes.clickListeners.RecyclerViewItemClickListener
 
 import com.example.nytimes.databinding.SearchItemLayoutBinding
 import com.example.nytimes.fragments.search_fragment.recycler_view_holder.SearchRecyclerVIewHolder
 import com.example.nytimes.local.entity.ArticleItemEntity
 
-class SearchRecyclerViewAdapter :
+class SearchRecyclerViewAdapter(private val clickListener: RecyclerViewItemClickListener) :
     PagingDataAdapter<ArticleItemEntity, SearchRecyclerVIewHolder>(diffUtil) {
 
     override fun onBindViewHolder(holder: SearchRecyclerVIewHolder, position: Int) {
@@ -20,7 +21,7 @@ class SearchRecyclerViewAdapter :
         val binding =
             SearchItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
-        return SearchRecyclerVIewHolder(binding)
+        return SearchRecyclerVIewHolder(binding,clickListener)
     }
 
     companion object {
