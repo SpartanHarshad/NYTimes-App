@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
@@ -61,7 +60,6 @@ class SectionFragment : Fragment(), OnClickListener {
 
     override fun getSectionName(sections: Sections) {
         var sectionName = sections.name.replace("\\s".toRegex(), "")
-
         when (sectionName) {
             "MostPopular" -> {
                 launchMostPopular()
@@ -82,10 +80,22 @@ class SectionFragment : Fragment(), OnClickListener {
                 launchSports()
             }
             "Arts" -> {
-                //launchArts()
+                launchArts()
             }
             "Magazine" -> {
-                //launchMagazine()
+                launchMagazine()
+            }
+            "ReaderCenter" -> {
+                launchReaderCenter()
+            }
+            "Photos" -> {
+                launchPhotos()
+            }
+            "Technology" -> {
+                launchTechnology()
+            }
+            "Health" -> {
+                launchHealth()
             }
         }
         //Toast.makeText(context, "${sectionName} Section Clicked", Toast.LENGTH_SHORT).show()
@@ -118,6 +128,36 @@ class SectionFragment : Fragment(), OnClickListener {
 
     private fun launchSports() {
         val action = SectionFragmentDirections.actionSectionFragmentToSportsFragment()
+        Navigation.findNavController(requireView()).navigate(action)
+    }
+
+    private fun launchArts() {
+        val action = SectionFragmentDirections.actionSectionFragmentToArtsNewsFragment()
+        Navigation.findNavController(requireView()).navigate(action)
+    }
+
+    private fun launchMagazine() {
+        val action = SectionFragmentDirections.actionSectionFragmentToMagazineFragment()
+        Navigation.findNavController(requireView()).navigate(action)
+    }
+
+    private fun launchReaderCenter() {
+        val action = SectionFragmentDirections.actionSectionFragmentToReaderCenterFragment()
+        Navigation.findNavController(requireView()).navigate(action)
+    }
+
+    private fun launchPhotos() {
+        val action = SectionFragmentDirections.actionSectionFragmentToPhotosFragment()
+        Navigation.findNavController(requireView()).navigate(action)
+    }
+
+    private fun launchTechnology() {
+        val action = SectionFragmentDirections.actionSectionFragmentToTechnologyFragment()
+        Navigation.findNavController(requireView()).navigate(action)
+    }
+
+    private fun launchHealth() {
+        val action = SectionFragmentDirections.actionSectionFragmentToHealthFragment()
         Navigation.findNavController(requireView()).navigate(action)
     }
 }

@@ -62,7 +62,6 @@ class ForYouAdapter: RecyclerView.Adapter<ForYouAdapter.ArticleViewHolder>() {
     fun setOnItemClickListener(listener: (Article) -> Unit) {
         onItemClickListener = listener
     }
-
 }
 
 

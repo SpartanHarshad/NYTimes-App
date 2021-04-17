@@ -2,7 +2,6 @@ package com.example.nytimes.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,28 +17,32 @@ import com.example.nytimes.local.entity.ArticleItemEntity
 import com.example.nytimes.util.Resource
 import com.example.nytimes.viewmodels.NewsViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_business_news.*
-import kotlinx.android.synthetic.main.fragment_world_news.*
+import kotlinx.android.synthetic.main.fragment_magazine.*
+import kotlinx.android.synthetic.main.fragment_magazine.ivBackToSectionMagzin
+import kotlinx.android.synthetic.main.fragment_reader_center.*
 
 @AndroidEntryPoint
-class BusinessNewsFragment : Fragment(), OnClickOfNews {
+class ReaderCenterFragment : Fragment(),OnClickOfNews {
 
     lateinit var newsAdapter: NewsAdapter
-    val newsViewModel:NewsViewModel by viewModels()
+    val newsViewModel: NewsViewModel by viewModels()
     var news = mutableListOf<ArticleItemEntity>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_business_news, container, false)
+        return inflater.inflate(R.layout.fragment_reader_center, container, false)
     }
 
     companion object {
-        fun newInstance(): BusinessNewsFragment {
-            return BusinessNewsFragment()
+        fun newInstance(): ReaderCenterFragment {
+            return ReaderCenterFragment()
         }
     }
 
@@ -47,19 +50,19 @@ class BusinessNewsFragment : Fragment(), OnClickOfNews {
         super.onViewCreated(view, savedInstanceState)
         setRecyclerData()
         observNews()
-        ivBackToSectionBis.setOnClickListener {
+        ivBackToSectionReader.setOnClickListener {
             launchSections()
         }
     }
 
     private fun setRecyclerData() {
         newsAdapter = NewsAdapter(news,this)
-        rvBusinessNews.layoutManager = LinearLayoutManager(context)
-        rvBusinessNews.adapter = newsAdapter
+        rvReaderCenterNews.layoutManager = LinearLayoutManager(context)
+        rvReaderCenterNews.adapter = newsAdapter
     }
 
     private fun observNews() {
-        newsViewModel.getNews("Business").observe(viewLifecycleOwner, Observer{ result ->
+        newsViewModel.getNews("insider").observe(viewLifecycleOwner, Observer{ result ->
             news.clear()
             news.addAll(result.data!!)
             newsAdapter.notifyDataSetChanged()
@@ -68,12 +71,12 @@ class BusinessNewsFragment : Fragment(), OnClickOfNews {
     }
 
     private fun launchSections() {
-        val action = BusinessNewsFragmentDirections.actionBusinessNewsFragmentToSectionFragment()
+        val action = ReaderCenterFragmentDirections.actionReaderCenterFragmentToSectionFragment()
         Navigation.findNavController(requireView()).navigate(action)
     }
 
     override fun getNews(result: ArticleItemEntity) {
-       val action = BusinessNewsFragmentDirections.actionBusinessNewsFragmentToArticleViewFragment(result.url!!)
+        val action = ReaderCenterFragmentDirections.actionReaderCenterFragmentToArticleViewFragment(result.url!!)
         Navigation.findNavController(requireView()).navigate(action)
     }
 
@@ -87,7 +90,9 @@ class BusinessNewsFragment : Fragment(), OnClickOfNews {
             putExtra(Intent.EXTRA_TEXT, url)
             type = "text/plain"
         }
+
         val shareIntent = Intent.createChooser(sendIntent, "Forward")
         startActivity(shareIntent)
     }
+
 }

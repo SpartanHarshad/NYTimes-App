@@ -22,7 +22,7 @@ class SectionRepository {
         sectionItems.add(Sections(R.drawable.ic_sports,"Sports"))
         sectionItems.add(Sections(R.drawable.ic_arts,"Arts"))
         sectionItems.add(Sections(R.drawable.ic_open_book1,"Magazine"))
-        sectionItems.add(Sections(R.drawable.ic_video_camera,"Video"))
+        //sectionItems.add(Sections(R.drawable.ic_video_camera,"Video"))
         sectionItems.add(Sections(R.drawable.ic_reader_center,"Reader Center"))
         sectionItems.add(Sections(R.drawable.ic_photos,"Photos"))
         sectionItems.add(Sections(R.drawable.ic_technology,"Technology"))

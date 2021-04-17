@@ -2,8 +2,10 @@ package com.example.nytimes.remote.network
 
 
 import com.example.nytimes.model.list_of_articles_dto.ArticleItemDto
+import com.example.nytimes.model.list_of_search_articles_dto.SearchArticleItemDto
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface NewsApi {
 
@@ -19,12 +21,7 @@ interface NewsApi {
     @GET("/svc/{topic}/v2/emailed/1.json?api-key=${API_KEY}")
     suspend fun getMostPopularNews(@Path("topic") topic: String): ArticleItemDto
 
-    @GET("svc/topstories/v2/{topic}.json?api-key=$API_KEY")
-    suspend fun getWorldNews(@Path("topic")topic :String): ArticleItemDto
+    // @GET("/svc/search/v2/articlesearch.json")
+   // suspend fun searchNews(@Query("q") topic: String,@Query("api-key") apiKey: String=API_KEY): SearchArticleItemDto
 
-    @GET("svc/topstories/v2/{topic}.json?api-key=$API_KEY")
-    suspend fun getUSNews(@Path("topic")topic :String): ArticleItemDto
-
-    @GET("svc/topstories/v2/{topic}.json?api-key=$API_KEY")
-    suspend fun getPoliticsNews(@Path("topic")topic :String): ArticleItemDto
 }
