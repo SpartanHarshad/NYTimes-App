@@ -10,7 +10,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
@@ -21,8 +21,7 @@ import com.example.nytimes.clickListeners.OnClickOfNews
 import com.example.nytimes.local.entity.ArticleItemEntity
 import com.example.nytimes.util.Resource
 import com.example.nytimes.viewmodels.NewsViewModel
-import com.example.nytimes.viewmodels.MostPopularNewsviewModel
-import com.robertsimoes.shareable.Shareable
+
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_most_popular_news.*
 import java.io.File
@@ -133,6 +132,10 @@ class MostPopularNewsFragment : Fragment(), OnClickOfNews {
     }
 
 
+
+
+
+}
     private fun getBitmapFromView(bmp: Bitmap?): Uri? {
         var bmpUri: Uri? = null
         try {
@@ -148,6 +151,5 @@ class MostPopularNewsFragment : Fragment(), OnClickOfNews {
         }
         return bmpUri
     }
-
 
 }

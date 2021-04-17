@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.example.nytimes.R
 import com.example.nytimes.clickListeners.OnClickOfNews
 import com.example.nytimes.local.entity.ArticleItemEntity
+import com.example.nytimes.util.BitMapCreator
 import kotlinx.android.synthetic.main.news_item_layout.view.*
 
 class NewsAdapter(val newsList:List<ArticleItemEntity>, val onClickOfNews: OnClickOfNews):RecyclerView.Adapter<NewsHolder>() {
@@ -43,7 +44,7 @@ class NewsHolder(val view: View, val onClickOfNews: OnClickOfNews):RecyclerView.
                 .load(articleItemEntity.image_low)
                 .into(ivMostNewsImg)
             ivMostForward.setOnClickListener {
-                onClickOfNews.forwardNews(articleItemEntity.url!!)
+                onClickOfNews.forwardNews(articleItemEntity.url!!, BitMapCreator.ViewShot(view))
             }
             ivMostSave.setOnClickListener {
                 Toast.makeText(context,"News Saved Offline", Toast.LENGTH_SHORT).show()
