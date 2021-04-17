@@ -34,7 +34,6 @@ class Module {
         val httpLoggingInterceptor =
             HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
 
-
         return Retrofit.Builder()
             .baseUrl(NewsApi.Base_URL)
             .addConverterFactory(GsonConverterFactory.create())

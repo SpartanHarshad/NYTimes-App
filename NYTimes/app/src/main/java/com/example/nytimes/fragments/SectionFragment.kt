@@ -1,6 +1,5 @@
 package com.example.nytimes.fragments
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,22 +7,23 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nytimes.R
 import com.example.nytimes.adapters.SectionAdapter
-import com.example.nytimes.clickListeners.SectionOnClickListener
+import com.example.nytimes.clickListeners.OnClickListener
 import com.example.nytimes.model.Sections
 import com.example.nytimes.repository.SectionRepository
 import com.example.nytimes.viewmodels.AllSectionsViewModel
 import com.example.nytimes.viewmodels.AllSectionsViewModelFactory
-import com.example.nytimes.views.MostPopularNewsActivity
 import kotlinx.android.synthetic.main.fragment_section.*
 
 
-class SectionFragment : Fragment(), SectionOnClickListener {
+class SectionFragment : Fragment(), OnClickListener {
 
     lateinit var sectionAdapter: SectionAdapter
     lateinit var sectionsViewModel: AllSectionsViewModel
+    var lists: List<Sections> = emptyList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,26 +48,76 @@ class SectionFragment : Fragment(), SectionOnClickListener {
         val viewmodelFactory = AllSectionsViewModelFactory(repo)
         sectionsViewModel =
             ViewModelProviders.of(this, viewmodelFactory).get(AllSectionsViewModel::class.java)
+        lists = sectionsViewModel.allSectionsModel()
         setRecyclerData()
     }
 
     private fun setRecyclerData() {
-        var list = sectionsViewModel.allSectionsModel()
-        sectionAdapter = SectionAdapter(list, this)
+        sectionAdapter = SectionAdapter(lists, this)
         rvSection.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         rvSection.adapter = sectionAdapter
     }
 
     override fun getSectionName(sections: Sections) {
-        var sectionName = sections.name
+        var sectionName = sections.name.replace("\\s".toRegex(), "")
 
-        when(sectionName){
-            "Most Popular" ->{
-                val intent = Intent(context,MostPopularNewsActivity::class.java)
-                startActivity(intent)
+        when (sectionName) {
+            "MostPopular" -> {
+                launchMostPopular()
+            }
+            "World" -> {
+                launchWorld()
+            }
+            "U.S." -> {
+                launchUS()
+            }
+            "Politics" -> {
+                launchPolitics()
+            }
+            "Business" -> {
+                launchBusiness()
+            }
+            "Sports" -> {
+                launchSports()
+            }
+            "Arts" -> {
+                //launchArts()
+            }
+            "Magazine" -> {
+                //launchMagazine()
             }
         }
-        Toast.makeText(context, "${sections.icon} Section Clicked", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(context, "${sectionName} Section Clicked", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun launchMostPopular() {
+        val action = SectionFragmentDirections.actionSectionFragmentToHiltMostPopularNewsFragment()
+        Navigation.findNavController(requireView()).navigate(action)
+    }
+
+    private fun launchWorld() {
+        val action = SectionFragmentDirections.actionSectionFragmentToWorldNewsFragment()
+        Navigation.findNavController(requireView()).navigate(action)
+    }
+
+    private fun launchUS() {
+        val action = SectionFragmentDirections.actionSectionFragmentToUSNewsFragment()
+        Navigation.findNavController(requireView()).navigate(action)
+    }
+
+    private fun launchPolitics() {
+        val action = SectionFragmentDirections.actionSectionFragmentToPoliticsNewsFragment()
+        Navigation.findNavController(requireView()).navigate(action)
+    }
+
+    private fun launchBusiness() {
+        val action = SectionFragmentDirections.actionSectionFragmentToBusinessNewsFragment()
+        Navigation.findNavController(requireView()).navigate(action)
+    }
+
+    private fun launchSports() {
+        val action = SectionFragmentDirections.actionSectionFragmentToSportsFragment()
+        Navigation.findNavController(requireView()).navigate(action)
     }
 }

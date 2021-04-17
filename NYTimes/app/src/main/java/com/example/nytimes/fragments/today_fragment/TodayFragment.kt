@@ -130,5 +130,4 @@ class TodayFragment : Fragment(R.layout.fragment_today), RecyclerViewItemClickLi
         val action = TodayFragmentDirections.actionTodayFragmentToArticelViewFragment(url)
         Navigation.findNavController(binding.root).navigate(action)
     }
-
 }

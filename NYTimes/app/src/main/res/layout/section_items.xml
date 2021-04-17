@@ -29,8 +29,9 @@
             android:layout_margin="15dp"
             android:paddingLeft="20dp"
             android:text="hello"
+            android:textSize="16sp"
             android:textColor="@color/black"
-            android:textStyle="normal"
+            android:fontFamily="@font/font_franklin_medium"
             app:layout_constraintBottom_toBottomOf="@id/ivIcon"
             app:layout_constraintLeft_toRightOf="@id/ivIcon"
             app:layout_constraintTop_toTopOf="@id/ivIcon" />

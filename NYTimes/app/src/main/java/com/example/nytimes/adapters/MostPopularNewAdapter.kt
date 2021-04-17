@@ -3,25 +3,26 @@ package com.example.nytimes.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.nytimes.R
-import com.example.nytimes.clickListeners.OnClickOfMostPopularNews
-import com.example.nytimes.model.Result
-import kotlinx.android.synthetic.main.mostpopular_news_item_layout.view.*
+import com.example.nytimes.clickListeners.OnClickOfNews
+import com.example.nytimes.local.entity.ArticleItemEntity
+import kotlinx.android.synthetic.main.news_item_layout.view.*
 
-class MostPopularNewsAdapter(val mostPopularNewsList: List<Result>, val onClickOfMostPopularNews: OnClickOfMostPopularNews
+class MostPopularNewAdapter(val mostPopularNewsList: List<ArticleItemEntity>, val onClickOfMostPopularNews: OnClickOfNews
 ) : RecyclerView.Adapter<MostPopularNewsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MostPopularNewsViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.mostpopular_news_item_layout, parent, false)
+            .inflate(R.layout.news_item_layout, parent, false)
         return MostPopularNewsViewHolder(view, onClickOfMostPopularNews)
     }
 
     override fun onBindViewHolder(holder: MostPopularNewsViewHolder, position: Int) {
-        val result: Result = mostPopularNewsList[position]
-        holder.setMostPopularNews(result)
+        val result: ArticleItemEntity = mostPopularNewsList[position]
+        holder.setMostPopularNews(result,position)
     }
 
     override fun getItemCount(): Int {
@@ -29,30 +30,31 @@ class MostPopularNewsAdapter(val mostPopularNewsList: List<Result>, val onClickO
     }
 }
 
-class MostPopularNewsViewHolder(val view: View, val onClickOfMostPopularNews: OnClickOfMostPopularNews
+class MostPopularNewsViewHolder(val view: View, val onClickOfMostPopularNews: OnClickOfNews
 ) : RecyclerView.ViewHolder(view) {
 
-    fun setMostPopularNews(result: Result) {
+    fun setMostPopularNews(result: ArticleItemEntity, position:Int) {
         view.apply {
-            tvNewsNo.text = result.id.toString()
+            tvNewsNo.text = "${position}."
             tvMostNewsTitle.text = result.title
-            tvMostNewsShortDesc.text = result.abstract
-            tvMostUpdatedTime.text = result.updated
+            tvMostNewsShortDesc.text = result.abstractt
+            tvMostUpdatedTime.text = result.updated_date
         }
         view.apply {
             Glide.with(ivMostNewsImg)
-                .load(result!!.media!![0].mediaMetadata!![0].url)
+                .load(result.image_low)
                 .into(ivMostNewsImg)
             ivMostForward.setOnClickListener {
-                onClickOfMostPopularNews.getMostPopularNews(result)
+                onClickOfMostPopularNews.forwardNews(result.url!!)
             }
             ivMostSave.setOnClickListener {
-                onClickOfMostPopularNews.getMostPopularNews(result)
+                Toast.makeText(context,"News Saved Offline", Toast.LENGTH_SHORT).show()
             }
         }
+
         view.apply {
             clMostPopularNews.setOnClickListener {
-                onClickOfMostPopularNews.getMostPopularNews(result)
+                onClickOfMostPopularNews.getNews(result)
             }
         }
     }
