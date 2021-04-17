@@ -1,29 +1,29 @@
-package com.example.nytimes.model.list_of_search_articles_dto
+package com.example.nytimes.model.search_result_dto
 
 
 import com.google.gson.annotations.SerializedName
 
 data class Multimedia(
     @SerializedName("caption")
-    var caption: Any? = null,
+    var caption: Any?,
     @SerializedName("credit")
-    var credit: Any? = null,
+    var credit: Any?,
     @SerializedName("crop_name")
-    var cropName: String? = null,
+    var cropName: String?,
     @SerializedName("height")
-    var height: Int? = null,
+    var height: Int?,
     @SerializedName("legacy")
-    var legacy: Legacy? = null,
+    var legacy: Legacy?,
     @SerializedName("rank")
-    var rank: Int? = null,
+    var rank: Int?,
     @SerializedName("subType")
-    var subType: String? = null,
+    var subType: String?,
     @SerializedName("subtype")
-    var subtype: String? = null,
+    var subtype: String?,
     @SerializedName("type")
-    var type: String? = null,
+    var type: String?,
     @SerializedName("url")
-    var url: String? = null,
+    var url: String?,
     @SerializedName("width")
-    var width: Int? = null
+    var width: Int?
 )

@@ -1,11 +1,11 @@
-package com.example.nytimes.model.list_of_search_articles_dto
+package com.example.nytimes.model.search_result_dto
 
 
 import com.google.gson.annotations.SerializedName
 
 data class Response(
     @SerializedName("docs")
-    var docs: List<Doc>? = null,
+    var docs: List<Doc>?,
     @SerializedName("meta")
-    var meta: Meta? = null
+    var meta: Meta?
 )

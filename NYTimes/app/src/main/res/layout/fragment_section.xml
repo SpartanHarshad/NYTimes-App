@@ -26,6 +26,14 @@
                 android:textSize="20sp"
                 android:fontFamily="@font/font_chelt_sh_bold"/>
 
+            <ImageView
+                android:id="@+id/ivSearchNews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic__search"
+                android:layout_margin="5dp"
+                android:paddingRight="4dp"
+                android:layout_alignParentRight="true"/>
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>

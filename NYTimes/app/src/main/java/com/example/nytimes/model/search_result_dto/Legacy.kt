@@ -1,25 +1,25 @@
-package com.example.nytimes.model.list_of_search_articles_dto
+package com.example.nytimes.model.search_result_dto
 
 
 import com.google.gson.annotations.SerializedName
 
 data class Legacy(
     @SerializedName("thumbnail")
-    var thumbnail: String? = null,
+    var thumbnail: String?,
     @SerializedName("thumbnailheight")
-    var thumbnailheight: Int? = null,
+    var thumbnailheight: Int?,
     @SerializedName("thumbnailwidth")
-    var thumbnailwidth: Int? = null,
+    var thumbnailwidth: Int?,
     @SerializedName("wide")
-    var wide: String? = null,
+    var wide: String?,
     @SerializedName("wideheight")
-    var wideheight: Int? = null,
+    var wideheight: Int?,
     @SerializedName("widewidth")
-    var widewidth: Int? = null,
+    var widewidth: Int?,
     @SerializedName("xlarge")
-    var xlarge: String? = null,
+    var xlarge: String?,
     @SerializedName("xlargeheight")
-    var xlargeheight: Int? = null,
+    var xlargeheight: Int?,
     @SerializedName("xlargewidth")
-    var xlargewidth: Int? = null
+    var xlargewidth: Int?
 )

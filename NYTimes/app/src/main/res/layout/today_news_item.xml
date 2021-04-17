@@ -25,7 +25,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="17dp"
         android:fontFamily="@font/font_chelt_light"
-        android:textColor="#808080"
+        android:textColor="#545454"
         android:textSize="15sp" />
 
     <ImageView
@@ -37,12 +37,22 @@
         android:layout_marginEnd="17dp"
         android:adjustViewBounds="true" />
 
+    <TextView
+        android:id="@+id/tvByLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="17dp"
+        android:fontFamily="@font/font_chelt_light"
+        android:textSize="10sp" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginStart="17dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="17dp"
-        android:background="#808080" />
+        android:background="#B3B3B3" />
 
 </LinearLayout>

@@ -68,6 +68,9 @@
         <action
             android:id="@+id/action_sectionFragment_to_healthFragment"
             app:destination="@id/healthFragment" />
+        <action
+            android:id="@+id/action_sectionFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
 
     <fragment
@@ -94,6 +97,19 @@
             app:destination="@id/articleViewFragment" />
         <action
             android:id="@+id/action_MostPopularNewsFragment_to_sectionFragment"
+            app:destination="@id/sectionFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.nytimes.fragments.search_fragment.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_searchFragment_to_articleViewFragment"
+            app:destination="@id/articleViewFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_sectionFragment"
             app:destination="@id/sectionFragment" />
     </fragment>
 

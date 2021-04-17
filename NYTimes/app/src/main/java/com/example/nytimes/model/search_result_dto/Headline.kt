@@ -1,21 +1,21 @@
-package com.example.nytimes.model.list_of_search_articles_dto
+package com.example.nytimes.model.search_result_dto
 
 
 import com.google.gson.annotations.SerializedName
 
 data class Headline(
     @SerializedName("content_kicker")
-    var contentKicker: Any? = null,
+    var contentKicker: Any?,
     @SerializedName("kicker")
-    var kicker: Any? = null,
+    var kicker: Any?,
     @SerializedName("main")
-    var main: String? = null,
+    var main: String?,
     @SerializedName("name")
-    var name: Any? = null,
+    var name: Any?,
     @SerializedName("print_headline")
-    var printHeadline: Any? = null,
+    var printHeadline: Any?,
     @SerializedName("seo")
-    var seo: Any? = null,
+    var seo: Any?,
     @SerializedName("sub")
-    var sub: Any? = null
+    var sub: Any?
 )

@@ -1,13 +1,13 @@
-package com.example.nytimes.model.list_of_search_articles_dto
+package com.example.nytimes.model.search_result_dto
 
 
 import com.google.gson.annotations.SerializedName
 
 data class Meta(
     @SerializedName("hits")
-    var hits: Int? = null,
+    var hits: Int?,
     @SerializedName("offset")
-    var offset: Int? = null,
+    var offset: Int?,
     @SerializedName("time")
-    var time: Int? = null
+    var time: Int?
 )

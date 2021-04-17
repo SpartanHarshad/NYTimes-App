@@ -49,6 +49,14 @@ class SectionFragment : Fragment(), OnClickListener {
             ViewModelProviders.of(this, viewmodelFactory).get(AllSectionsViewModel::class.java)
         lists = sectionsViewModel.allSectionsModel()
         setRecyclerData()
+        ivSearchNews.setOnClickListener {
+            launchSearchFragment()
+        }
+    }
+
+    private fun launchSearchFragment() {
+        val action = SectionFragmentDirections.actionSectionFragmentToSearchFragment()
+        Navigation.findNavController(requireView()).navigate(action)
     }
 
     private fun setRecyclerData() {

@@ -1,13 +1,13 @@
-package com.example.nytimes.model.list_of_search_articles_dto
+package com.example.nytimes.model.search_result_dto
 
 
 import com.google.gson.annotations.SerializedName
 
 data class Byline(
     @SerializedName("organization")
-    var organization: Any? = null,
+    var organization: Any?,
     @SerializedName("original")
-    var original: String? = null,
+    var original: String?,
     @SerializedName("person")
-    var person: List<Person>? = null
+    var person: List<Person>?
 )

@@ -1,23 +1,23 @@
-package com.example.nytimes.model.list_of_search_articles_dto
+package com.example.nytimes.model.search_result_dto
 
 
 import com.google.gson.annotations.SerializedName
 
 data class Person(
     @SerializedName("firstname")
-    var firstname: String? = null,
+    var firstname: String?,
     @SerializedName("lastname")
-    var lastname: String? = null,
+    var lastname: String?,
     @SerializedName("middlename")
-    var middlename: Any? = null,
+    var middlename: Any?,
     @SerializedName("organization")
-    var organization: String? = null,
+    var organization: String?,
     @SerializedName("qualifier")
-    var qualifier: Any? = null,
+    var qualifier: Any?,
     @SerializedName("rank")
-    var rank: Int? = null,
+    var rank: Int?,
     @SerializedName("role")
-    var role: String? = null,
+    var role: String?,
     @SerializedName("title")
-    var title: Any? = null
+    var title: Any?
 )

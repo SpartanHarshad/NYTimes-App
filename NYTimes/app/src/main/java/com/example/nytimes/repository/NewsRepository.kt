@@ -1,9 +1,13 @@
 package com.example.nytimes.repository
 
+import android.util.Log
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.liveData
 import androidx.room.withTransaction
+import com.example.nytimes.fragments.search_fragment.paging.NewsPagingSource
 import com.example.nytimes.local.database.NewsDatabase
 import com.example.nytimes.local.dto_to_entity.ListOfArticlesDotToEntity
-import com.example.nytimes.local.dto_to_entity.ListSearchArticleItemDtoToEntity
 import com.example.nytimes.remote.network.NewsApi
 import com.example.nytimes.util.networkBoundResource
 import javax.inject.Inject
@@ -45,18 +49,25 @@ class NewsRepository @Inject constructor(
         }
     )
 
-    /*fun searchNews(topic: String) = networkBoundResource(
-        query = {
-            newsDao.getAll(topic)
-        },
-        fetch = {
-            ListSearchArticleItemDtoToEntity.ArticleItemDtoToEntity(api.searchNews(topic), topic)
-        },
-        saveFetchResult = { news ->
-            db.withTransaction {
-                newsDao.deleteAll(topic)
-                newsDao.insertItem(news)
-            }
-        }
-    )*/
+    fun searchInCache(query: String) = Pager(
+        config = PagingConfig(
+            pageSize = 10,
+            maxSize = 100,
+            enablePlaceholders = false
+        )
+    ) {
+        Log.d("ddd","")
+        newsDao.searchInCache("%$query%")
+    }.liveData
+
+    fun getSearchResults(query: String) =
+        Pager(
+            config = PagingConfig(
+                pageSize = 10,
+                maxSize = 100,
+                enablePlaceholders = false
+            ),
+            pagingSourceFactory = { NewsPagingSource(news = api, query) }
+        ).liveData
+
 }

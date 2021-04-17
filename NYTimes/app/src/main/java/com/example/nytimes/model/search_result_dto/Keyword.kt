@@ -1,15 +1,15 @@
-package com.example.nytimes.model.list_of_search_articles_dto
+package com.example.nytimes.model.search_result_dto
 
 
 import com.google.gson.annotations.SerializedName
 
 data class Keyword(
     @SerializedName("major")
-    var major: String? = null,
+    var major: String?,
     @SerializedName("name")
-    var name: String? = null,
+    var name: String?,
     @SerializedName("rank")
-    var rank: Int? = null,
+    var rank: Int?,
     @SerializedName("value")
-    var value: String? = null
+    var value: String?
 )
