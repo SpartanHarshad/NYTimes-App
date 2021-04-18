@@ -18,14 +18,13 @@ import kotlinx.android.synthetic.main.activity_main.*
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    lateinit var viewModel: ForYouViewModel
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        /*val youRepository = YouRepository(ForYouDatabase(this))
+
+       /* val youRepository = YouRepository(ForYouDatabase(this))
         val viewModelProviderFactory = ForViewModelProviderFactory(youRepository)
-        viewModel = ViewModelProvider(this, viewModelProviderFactory).get(ForYouViewModel::class.java)*/
+        val viewModel = ViewModelProvider(this, viewModelProviderFactory).get(ForYouViewModel::class.java)*/
 
         bottomNavigationView.setupWithNavController(newsNavHostFragment.findNavController())
     }
