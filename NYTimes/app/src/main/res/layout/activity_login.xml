@@ -14,21 +14,22 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/login"
             android:layout_width="match_parent"
-            android:layout_height="60dp">
+            android:layout_height="55dp"
+            android:backgroundTint="#F5F5F5">
 
             <ImageView
                 android:id="@+id/btnLoginArrow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
                 android:src="@drawable/ic_backarrow" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="100dp"
-                android:layout_marginTop="10dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="75dp"
                 android:text="Log In"
                 android:textColor="@color/black"
                 android:textSize="20sp"
@@ -40,38 +41,48 @@
         android:id="@+id/etLoginEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="30dp"
         android:hint="Email" />
 
     <EditText
         android:id="@+id/etLoginPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
         android:hint="Password" />
 
-    <Button
-        android:id="@+id/btnLogin"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
-        android:background="#2E8BC0"
-        android:text="Log In"
-        android:textColor="@color/white" />
+        app:cardCornerRadius="5dp">
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#6388A5"
+            android:fontFamily="@font/font_franklin_medium"
+            android:text="Log In"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+    </androidx.cardview.widget.CardView>
+
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
+        android:fontFamily="@font/font_franklin_light"
         android:gravity="center"
         android:text="Forgot Password"
-        android:textColor="#89CFF0" />
+        android:textColor="#6E93AB" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -79,29 +90,50 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/CreateOne"
+
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="55dp"
+
             android:layout_alignParentBottom="true">
 
-            <TextView
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="30dp"
-                android:text="Don't have an account?"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/CreateAccount"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="250dp"
-                android:layout_marginTop="30dp"
-                android:text="Create One"
-                android:textColor="#89CFF0"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/font_franklin_medium"
+                    android:text="Don't have an account? "
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/CreateAccount"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/CreateAccount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/font_franklin_medium"
+                    android:text="Create One"
+                    android:textColor="#89CFF0"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/textView2"
+                    app:layout_constraintTop_toTopOf="@+id/textView2" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
     </RelativeLayout>
 </LinearLayout>

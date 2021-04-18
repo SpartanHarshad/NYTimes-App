@@ -58,10 +58,10 @@ class TodayFragment : Fragment(R.layout.fragment_today), RecyclerViewItemClickLi
                 isFast: Boolean
             ) {
                 if (isConnected && startNetworkCheck) {
-                     Log.d("taggg", "network is back")
-                     viewModel.loadingAnimation.postValue(true)
-                     setObserver()
-                 } else {
+                    Log.d("taggg", "network is back")
+                    viewModel.loadingAnimation.postValue(true)
+                    setObserver()
+                } else {
 
                 }
             }
@@ -91,27 +91,31 @@ class TodayFragment : Fragment(R.layout.fragment_today), RecyclerViewItemClickLi
     }
 
     private fun setObserver() {
-        viewModel.getNews("home").observe(viewLifecycleOwner, Observer { result ->
-            todayAdapter.updateList(result.data)
-            Log.d("taggg", "${(result.data?.size ?: 0)}")
+        try {
+            viewModel.getNews("home").observe(viewLifecycleOwner, Observer { result ->
+                todayAdapter.updateList(result.data)
+                Log.d("taggg", "${(result.data?.size ?: 0)}")
 
-            /* binding.progressBar.isVisible =
-                 result is Resource.Loading && result.data.isNullOrEmpty()*/
-            viewModel.loadingAnimation.postValue(result is Resource.Loading && result.data.isNullOrEmpty())
+                /* binding.progressBar.isVisible =
+                     result is Resource.Loading && result.data.isNullOrEmpty()*/
+                viewModel.loadingAnimation.postValue(result is Resource.Loading && result.data.isNullOrEmpty())
 
-            //  binding.error.text = result.error?.localizedMessage ?: "yoyo"
+                //  binding.error.text = result.error?.localizedMessage ?: "yoyo"
 
-            if (result is Resource.Success) {
-                Snackbar.make(
-                    binding.root,
-                    "News Has been updated",
-                    Snackbar.LENGTH_SHORT
-                )
-                    .show()
-            }
+                if (result is Resource.Success) {
+                    Snackbar.make(
+                        binding.root,
+                        "News Has been updated",
+                        Snackbar.LENGTH_SHORT
+                    )
+                        .show()
+                }
 
-            startNetworkCheck = true
-        })
+                startNetworkCheck = true
+            })
+        } catch (e: Exception) {
+
+        }
 
     }
 
