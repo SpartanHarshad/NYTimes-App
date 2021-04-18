@@ -72,7 +72,3 @@ class ForYouAdapter: RecyclerView.Adapter<ForYouAdapter.ArticleViewHolder>() {
 
 
 
-
-
-
-
