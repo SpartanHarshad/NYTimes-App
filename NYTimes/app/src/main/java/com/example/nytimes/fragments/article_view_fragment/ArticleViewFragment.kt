@@ -26,9 +26,7 @@ class ArticleViewFragment : Fragment(), AdvancedWebView.Listener {
     val args: ArticleViewFragmentArgs by navArgs()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentArticelViewBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -44,9 +42,9 @@ class ArticleViewFragment : Fragment(), AdvancedWebView.Listener {
             }
             loadUrl(args.url)
         }*/
+
         binding.webView.getSettings().setJavaScriptEnabled(false)
         binding.webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(false)
-
         binding.webView.setCookiesEnabled(false)
         binding.webView.setThirdPartyCookiesEnabled(false)
         binding.webView.setListener(activity, this)
@@ -68,7 +66,6 @@ class ArticleViewFragment : Fragment(), AdvancedWebView.Listener {
         if (shouldDownload) {
             download(args.url, arry[arry.size - 1])
         }
-
         Log.d("taggg", arry[arry.size - 1])
     }
 
