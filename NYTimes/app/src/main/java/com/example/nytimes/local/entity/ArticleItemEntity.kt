@@ -2,6 +2,7 @@ package com.example.nytimes.local.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.OnConflictStrategy
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "newsTable")
@@ -24,6 +25,5 @@ data class ArticleItemEntity(
 
    /* @ColumnInfo(name = "id")
     var id: Int? = null*/
-
 
 }
