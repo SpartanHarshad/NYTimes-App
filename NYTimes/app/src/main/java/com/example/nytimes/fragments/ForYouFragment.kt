@@ -5,12 +5,16 @@ import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nytimes.R
 import com.example.nytimes.api.Resource
 import com.example.nytimes.viewmodels.ForYouViewModel
 import com.example.nytimes.adapters.ForYouAdapter
+import com.example.nytimes.local.ForYouDatabase
+import com.example.nytimes.repository.YouRepository
+import com.example.nytimes.viewmodels.ForViewModelProviderFactory
 import com.example.nytimes.views.MainActivity
 import kotlinx.android.synthetic.main.fragment_foryou.*
 
@@ -19,14 +23,17 @@ class ForYouFragment:Fragment(R.layout.fragment_foryou) {
 
     lateinit var viewModel: ForYouViewModel
     lateinit var newsAdapter: ForYouAdapter
-
     val TAG = "ForYouFragment"
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = (activity as MainActivity).viewModel
-        setupRecyclerView()
 
+        val youRepository = YouRepository(ForYouDatabase(requireContext()))
+        val viewModelProviderFactory = ForViewModelProviderFactory(youRepository)
+        viewModel = ViewModelProvider(this, viewModelProviderFactory).get(ForYouViewModel::class.java)
+        //viewModel = (activity as MainActivity).viewModel
+
+        setupRecyclerView()
         newsAdapter.setOnItemClickListener {
             val bundle=Bundle().apply {
                 putSerializable("article", it)

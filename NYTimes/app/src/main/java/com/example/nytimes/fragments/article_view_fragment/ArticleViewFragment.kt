@@ -23,7 +23,6 @@ class ArticleViewFragment : Fragment(), AdvancedWebView.Listener {
 
     private var _binding: FragmentArticelViewBinding? = null
     private val binding get() = _binding!!
-
     val args: ArticleViewFragmentArgs by navArgs()
 
     override fun onCreateView(
@@ -53,7 +52,6 @@ class ArticleViewFragment : Fragment(), AdvancedWebView.Listener {
         binding.webView.setListener(activity, this)
         binding.webView.setMixedContentAllowed(true)
         binding.webView.loadUrl(args.url, false)
-
 
     }
 
@@ -113,20 +111,16 @@ class ArticleViewFragment : Fragment(), AdvancedWebView.Listener {
         if (something) {
             something = false;
             binding.webView.loadUrl(
-                 Environment.DIRECTORY_DOWNLOADS + "/nycTimes/${arry[arry.size - 1]}"
+                Environment.DIRECTORY_DOWNLOADS + "/nycTimes/${arry[arry.size - 1]}"
             )
 
             if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
                 binding.webView.getSettings().setAllowFileAccess(true);
-                binding.webView.loadUrl("file:///sdcard/"+Environment.DIRECTORY_DOWNLOADS + "/nycTimes/${arry[arry.size - 1]}");
+                binding.webView.loadUrl("file:///sdcard/" + Environment.DIRECTORY_DOWNLOADS + "/nycTimes/${arry[arry.size - 1]}");
             }
 
 
         }
-
-
-
-
 
         Log.d(
             "taggg",
@@ -136,14 +130,8 @@ class ArticleViewFragment : Fragment(), AdvancedWebView.Listener {
 
     }
 
-    override fun onDownloadRequested(
-        url: String?,
-        suggestedFilename: String?,
-        mimeType: String?,
-        contentLength: Long,
-        contentDisposition: String?,
-        userAgent: String?
-    ) {
+    override fun onDownloadRequested(url: String?, suggestedFilename: String?, mimeType: String?, contentLength: Long,
+        contentDisposition: String?, userAgent: String?) {
 
     }
 
