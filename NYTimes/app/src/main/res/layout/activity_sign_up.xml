@@ -12,8 +12,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/createAccount"
             android:layout_width="match_parent"
-            android:layout_marginTop="10dp"
-            android:layout_height="50dp">
+            android:layout_height="60dp">
             <ImageView
                 android:id="@+id/btnCreateAccountArrow"
                 android:layout_width="wrap_content"
@@ -63,9 +62,10 @@
         android:layout_marginEnd="30dp"
         android:layout_marginTop="50dp"
         android:text="Create Account"
-        android:background="#89CFF0"
+        android:background="#2E8BC0"
         android:textColor="@color/white"
         android:layout_height="wrap_content"/>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

@@ -48,7 +48,8 @@ class ForYouAdapter: RecyclerView.Adapter<ForYouAdapter.ArticleViewHolder>() {
         val article = differ.currentList[position]
         holder.itemView.apply {
             Glide.with(this).load(article.urlToImage).into(ivArticleImage)
-            tvSource.text = article.source.name
+            tvSource.text = "New York Times"
+
             tvTitle.text = article.title
             tvDescription.text = article.description
             //tvPublishedAt.text = article.publishedAt

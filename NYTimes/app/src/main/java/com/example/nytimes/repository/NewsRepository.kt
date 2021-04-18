@@ -29,4 +29,18 @@ class NewsRepository @Inject constructor(
         }
     )
 
+    fun getMostPopularNews(topic: String) = networkBoundResource(
+        query = {
+            newsDao.getAll(topic)
+        },
+        fetch = {
+            ListOfArticlesDotToEntity.ArticleItemDtoToEntity(api.getMostPopularNews(topic), topic)
+        },
+        saveFetchResult = { news ->
+            db.withTransaction {
+                newsDao.deleteAll(topic)
+                newsDao.insertItem(news)
+            }
+        }
+    )
 }

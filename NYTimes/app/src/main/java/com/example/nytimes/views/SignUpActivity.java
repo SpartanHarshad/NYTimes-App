@@ -11,6 +11,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +28,8 @@ public class SignUpActivity extends AppCompatActivity {
     private Button SignupButton;
     private TextView SignInTv;
     private FirebaseAuth firebaseAuth;
+    private ImageView sign;
+
 
 
     @Override
@@ -40,6 +43,8 @@ public class SignUpActivity extends AppCompatActivity {
         ConfirmPasswordEt = findViewById(R.id.etConfirmPassword);
         SignupButton = findViewById(R.id.btnSignUp);
         SignInTv = findViewById(R.id.LoginAccount);
+        sign=findViewById(R.id.btnCreateAccountArrow);
+
 
         SignupButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +53,15 @@ public class SignUpActivity extends AppCompatActivity {
 
             }
         });
+
+sign.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Intent intent = new Intent( SignUpActivity.this,MakeAccountActivity.class);
+        startActivity(intent);
+        finish();
+    }
+});
         SignInTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

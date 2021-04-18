@@ -7,10 +7,12 @@
     android:gravity="center"
     android:layout_height="match_parent"
     tools:context=".views.SplashActivity">
-<TextView
+<ImageView
     android:layout_width="match_parent"
-    android:text="The New York Times"
+    android:src="@drawable/ic_splash"
     android:gravity="center"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
     android:layout_height="wrap_content"/>
 
 

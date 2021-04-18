@@ -11,7 +11,8 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nytimes.R
 import com.example.nytimes.adapters.SectionAdapter
-import com.example.nytimes.clickListeners.SectionOnClickListener
+import com.example.nytimes.clickListeners.OnClickListener
+
 import com.example.nytimes.model.Sections
 import com.example.nytimes.repository.SectionRepository
 import com.example.nytimes.viewmodels.AllSectionsViewModel
@@ -20,7 +21,7 @@ import com.example.nytimes.views.MostPopularNewsActivity
 import kotlinx.android.synthetic.main.fragment_section.*
 
 
-class SectionFragment : Fragment(), SectionOnClickListener {
+class SectionFragment : Fragment(), OnClickListener {
 
     lateinit var sectionAdapter: SectionAdapter
     lateinit var sectionsViewModel: AllSectionsViewModel
@@ -60,35 +61,48 @@ class SectionFragment : Fragment(), SectionOnClickListener {
     }
 
     override fun getSectionName(sections: Sections) {
-        var sectionName = sections.icon.toString()
+        var sectionName = sections.name.replace("\\s".toRegex(), "")
 
         when (sectionName) {
-            "2131165308" -> {
+            "MostPopular" -> {
                 launchMostPopular()
             }
-            "2131165329" -> {
+            "World" -> {
                 launchWorld()
             }
-            "2131165325" -> {
-                //launchUS()
+            "U.S." -> {
+               // launchUS()
             }
-            "2131165317" -> {
-                //launchPolitics()
+            "Politics" -> {
+               // launchPolitics()
             }
-            "2131165296" -> {
-                //launchBusiness()
+            "Business" -> {
+               // launchBusiness()
             }
-            "2131165320" -> {
+            "Sports" -> {
                 //launchSports()
             }
-            "2131165292" -> {
+            "Arts" -> {
                 //launchArts()
             }
-            "2131165315" -> {
+            "Magazine" -> {
                 //launchMagazine()
             }
+            "ReaderCenter" -> {
+                //launchReaderCenter()
+            }
+            "Photos" -> {
+               // launchPhotos()
+            }
+            "Technology" -> {
+                //launchTechnology()
+            }
+            "Health" -> {
+               // launchHealth()
+            }
+
         }
-        Toast.makeText(context, "${sections.icon} Section Clicked", Toast.LENGTH_SHORT).show()
+       // Toast.makeText(context, "${sections.icon} Section Clicked", Toast.LENGTH_SHORT).show()
     }
 
     private fun launchMostPopular() {

@@ -12,8 +12,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/login"
             android:layout_width="match_parent"
-            android:layout_marginTop="10dp"
-            android:layout_height="50dp">
+            android:layout_height="60dp">
             <ImageView
                 android:id="@+id/btnLoginArrow"
                 android:layout_width="wrap_content"
@@ -55,7 +54,7 @@
         android:layout_marginEnd="30dp"
         android:layout_marginTop="20dp"
         android:text="Log In"
-        android:background="#89CFF0"
+        android:background="#2E8BC0"
         android:textColor="@color/white"
         android:layout_height="wrap_content"/>
     <TextView

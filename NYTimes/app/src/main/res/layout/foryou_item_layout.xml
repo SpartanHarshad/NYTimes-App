@@ -7,21 +7,19 @@
     android:layout_height="wrap_content"
     android:padding="8dp">
 
-
     <TextView
         android:id="@+id/tvSource"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="SOURCE"
+        android:layout_marginStart="5dp"
         android:textStyle="bold"
         android:textColor="@android:color/black" />
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginStart="17dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="17dp"
         android:background="#808080" />
 
     <TextView
@@ -58,8 +56,6 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginStart="17dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="17dp"
         android:background="#808080" />
 </LinearLayout>

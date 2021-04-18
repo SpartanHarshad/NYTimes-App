@@ -13,10 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NYTimes">
-        <activity android:name=".views.LoginActivity"></activity>
+        <activity android:name=".views.MakeAccountActivity"></activity>
+        <activity android:name=".views.SettingActivity" />
+        <activity android:name=".views.LoginActivity" />
         <activity android:name=".views.SignUpActivity" />
         <activity android:name=".views.LoginwithgoogleActivity" />
-        <activity android:name=".views.MakeAccountActivity" />
         <activity android:name=".views.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

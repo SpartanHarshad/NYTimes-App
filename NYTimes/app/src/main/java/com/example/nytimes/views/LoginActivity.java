@@ -10,6 +10,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,23 +26,33 @@ public class LoginActivity extends AppCompatActivity {
     private Button SignInButton;
     private TextView SignUpTv;
     private FirebaseAuth firebaseAuth;
+    private ImageView login;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         firebaseAuth = FirebaseAuth.getInstance();
         EmailEtt = findViewById(R.id.etLoginEmail);
         PassworddEt = findViewById(R.id.etLoginPassword);
         SignInButton = findViewById(R.id.btnLogin);
         SignUpTv = findViewById(R.id.CreateAccount);
+        login = findViewById(R.id.btnLoginArrow);
         SignInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Login();
 
+            }
+        });
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this,SignUpActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
         SignUpTv.setOnClickListener(new View.OnClickListener() {

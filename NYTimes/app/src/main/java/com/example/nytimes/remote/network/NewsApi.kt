@@ -14,4 +14,8 @@ interface NewsApi {
     @GET("{topic}.json?api-key=$API_KEY")
     suspend fun getNews(@Path("topic") topic: String): ArticleItemDto
 
+
+    @GET("/svc/{topic}/v2/emailed/1.json?api-key=${API_KEY}")
+    suspend fun getMostPopularNews(@Path("topic") topic: String): ArticleItemDto
+
 }

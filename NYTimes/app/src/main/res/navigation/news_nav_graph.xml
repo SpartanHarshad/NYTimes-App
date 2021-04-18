@@ -16,10 +16,7 @@
             android:id="@+id/action_todayFragment_to_articelViewFragment"
             app:destination="@id/articleViewFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/covidFragment"
-        android:name="com.example.nytimes.fragments.CovidFragment"
-        android:label="CovidFragment" />
+
     <fragment
         android:id="@+id/forYouFragment"
         android:name="com.example.nytimes.fragments.ForYouFragment"
@@ -31,7 +28,14 @@
     <fragment
         android:id="@+id/sectionFragment"
         android:name="com.example.nytimes.fragments.SectionFragment"
-        android:label="SectionFragment" />
+        android:label="SectionFragment">
+        <action
+            android:id="@+id/action_sectionFragment_to_hilt_MostPopularNewsFragment"
+            app:destination="@id/MostPopularNewsFragment" />
+
+        <action
+            android:id="@+id/action_sectionFragment_to_worldNewsFragment"
+            app:destination="@id/worldNewsFragment" />  </fragment>
     <fragment
         android:id="@+id/articleFragment2"
         android:name="com.example.nytimes.fragments.ArticleFragment"
@@ -44,5 +48,28 @@
         <argument
             android:name="url"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/MostPopularNewsFragment"
+        android:name="com.example.nytimes.fragments.MostPopularNewsFragment"
+        android:label="@layout/fragment_most_popular_news">
+        <action
+            android:id="@+id/action_MostPopularNewsFragment_to_articleViewFragment"
+            app:destination="@id/articleViewFragment" />
+        <action
+            android:id="@+id/action_MostPopularNewsFragment_to_sectionFragment"
+            app:destination="@id/sectionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/worldNewsFragment"
+        android:name="com.example.nytimes.fragments.WorldNewsFragment"
+        android:label="fragment_world_news"
+        tools:layout="@layout/fragment_world_news">
+        <action
+            android:id="@+id/action_worldNewsFragment_to_articleViewFragment"
+            app:destination="@id/articleViewFragment" />
+        <action
+            android:id="@+id/action_worldNewsFragment_to_sectionFragment"
+            app:destination="@id/sectionFragment" />
     </fragment>
 </navigation>

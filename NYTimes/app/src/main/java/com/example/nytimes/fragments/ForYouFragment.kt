@@ -1,5 +1,6 @@
 package com.example.nytimes.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -12,6 +13,7 @@ import com.example.nytimes.api.Resource
 import com.example.nytimes.viewmodels.ForYouViewModel
 import com.example.nytimes.views.ForYouAdapter
 import com.example.nytimes.views.MainActivity
+import com.example.nytimes.views.SettingActivity
 import kotlinx.android.synthetic.main.fragment_foryou.*
 
 
@@ -27,6 +29,11 @@ class ForYouFragment:Fragment(R.layout.fragment_foryou) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = (activity as MainActivity).viewModel
         setupRecyclerView()
+           btnSetting.setOnClickListener {
+               val intent =Intent(activity,SettingActivity::class.java)
+               startActivity(intent)
+           }
+
 
         newsAdapter.setOnItemClickListener {
             val bundle=Bundle().apply {
@@ -73,4 +80,7 @@ class ForYouFragment:Fragment(R.layout.fragment_foryou) {
             layoutManager = LinearLayoutManager(activity)
         }
     }
+
+
+
 }
