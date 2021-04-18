@@ -57,18 +57,13 @@ class TodayFragment : Fragment(R.layout.fragment_today), RecyclerViewItemClickLi
                 isConnected: Boolean,
                 isFast: Boolean
             ) {
-                /* if (isConnected && startNetworkCheck) {
+                if (isConnected && startNetworkCheck) {
                      Log.d("taggg", "network is back")
                      viewModel.loadingAnimation.postValue(true)
                      setObserver()
                  } else {
-                    *//* Snackbar.make(
-                        binding.root,
-                        "No Internet",
-                        Snackbar.LENGTH_SHORT
-                    )
-                        .show()*//*
-                }*/
+
+                }
             }
         })
     }

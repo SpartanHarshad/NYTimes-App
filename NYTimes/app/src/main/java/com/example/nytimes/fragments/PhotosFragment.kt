@@ -87,6 +87,10 @@ class PhotosFragment : Fragment(), OnClickOfNews {
         //forwardNewsOnSocialMedia(url)
     }
 
+    override fun bookmarkNews(bookmark: ArticleItemEntity) {
+        TODO("Not yet implemented")
+    }
+
     fun forwardNewsOnSocialMedia(url: String) {
         val sendIntent: Intent = Intent().apply {
             action = Intent.ACTION_SEND

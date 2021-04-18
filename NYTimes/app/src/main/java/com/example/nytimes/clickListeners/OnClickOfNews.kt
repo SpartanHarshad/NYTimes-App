@@ -7,4 +7,7 @@ interface OnClickOfNews {
 
     fun getNews(result: ArticleItemEntity)
     fun forwardNews(url: String,image:Bitmap? = null)
+
+    fun bookmarkNews(bookmark: ArticleItemEntity)
+
 }
