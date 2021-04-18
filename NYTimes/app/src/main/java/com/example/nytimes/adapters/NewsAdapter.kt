@@ -48,6 +48,7 @@ class NewsHolder(val view: View, val onClickOfNews: OnClickOfNews):RecyclerView.
             }
             ivMostSave.setOnClickListener {
                 Toast.makeText(context,"News Saved Offline", Toast.LENGTH_SHORT).show()
+                onClickOfNews.bookmarkNews(articleItemEntity)
             }
         }
 
