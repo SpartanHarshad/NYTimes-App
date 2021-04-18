@@ -6,6 +6,7 @@ import android.view.View
 
 
 class BitMapCreator {
+
     companion object {
 
         fun ViewShot(v: View): Bitmap? {
@@ -17,7 +18,5 @@ class BitMapCreator {
             v.draw(c)
             return b
         }
-
     }
-
 }

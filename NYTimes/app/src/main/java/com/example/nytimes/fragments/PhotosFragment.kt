@@ -26,7 +26,6 @@ import kotlinx.android.synthetic.main.fragment_photos.*
 @AndroidEntryPoint
 class PhotosFragment : Fragment(), OnClickOfNews {
 
-
     lateinit var newsAdapter: GridNewsAdapter
     val newsViewModel: NewsViewModel by viewModels()
     var news = mutableListOf<ArticleItemEntity>()

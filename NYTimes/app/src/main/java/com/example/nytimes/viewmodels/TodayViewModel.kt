@@ -11,9 +11,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class TodayViewModel @Inject constructor(
-    var repository: NewsRepository
-) : ViewModel() {
+class TodayViewModel @Inject constructor(var repository: NewsRepository) : ViewModel() {
 
     //val news = repository.getNews().asLiveData()
 

@@ -25,8 +25,8 @@ class ForYouViewModel(val youRepository: YouRepository) : ViewModel() {
         foryouNews.postValue(handleForyouNewsResponse(response))
     }
 
-    private fun handleForyouNewsResponse(response: Response<NewsResponse>) : Resource<NewsResponse> {
-        if(response.isSuccessful) {
+    private fun handleForyouNewsResponse(response: Response<NewsResponse>): Resource<NewsResponse> {
+        if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
                 return Resource.Success(resultResponse)
             }
@@ -37,10 +37,11 @@ class ForYouViewModel(val youRepository: YouRepository) : ViewModel() {
     fun saveArticle(article: Article) = viewModelScope.launch {
         youRepository.upsert(article)
     }
-    fun getSavedNews()= youRepository.getSavedNews()
+
+    fun getSavedNews() = youRepository.getSavedNews()
 
 
-    fun deleteArticle(article: Article)= viewModelScope.launch {
+    fun deleteArticle(article: Article) = viewModelScope.launch {
         youRepository.deleteArticle(article)
     }
 }

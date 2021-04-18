@@ -56,7 +56,7 @@ class NewsRepository @Inject constructor(
             enablePlaceholders = false
         )
     ) {
-        Log.d("ddd","")
+        Log.d("ddd", "")
         newsDao.searchInCache("%$query%")
     }.liveData
 

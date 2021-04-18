@@ -12,7 +12,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class NewsViewModel @Inject constructor(var repository: NewsRepository) : ViewModel(){
+class NewsViewModel @Inject constructor(var repository: NewsRepository) : ViewModel() {
 
     fun getNews(topic: String): LiveData<Resource<List<ArticleItemEntity>>> {
         return repository.getNews(topic).asLiveData();
@@ -21,11 +21,6 @@ class NewsViewModel @Inject constructor(var repository: NewsRepository) : ViewMo
     fun getMostPopularNews(topic: String): LiveData<Resource<List<ArticleItemEntity>>> {
         return repository.getMostPopularNews(topic).asLiveData();
     }
-
-   /* fun searchNews(topic: String): LiveData<Resource<List<ArticleItemEntity>>> {
-        Log.d("reader", "searchNews: "+repository.searchNews(topic))
-        return repository.searchNews(topic).asLiveData();
-    }*/
 
     val loadingAnimation = MutableLiveData<Boolean>(true)
 
