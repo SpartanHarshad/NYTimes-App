@@ -8,7 +8,7 @@ import java.io.Serializable
 import java.lang.IllegalArgumentException
 
 data class ArticleFragmentArgs(
-        val article: Article
+    val article: Article
 ) : NavArgs {
     @Suppress("CAST_NEVER_SUCCEEDS")
     fun toBundle(): Bundle {
@@ -18,8 +18,10 @@ data class ArticleFragmentArgs(
         } else if (Serializable::class.java.isAssignableFrom(Article::class.java)) {
             result.putSerializable("article", this.article as Serializable)
         } else {
-            throw UnsupportedOperationException(Article::class.java.name +
-                    " must implement Parcelable or Serializable or must be an Enum.")
+            throw UnsupportedOperationException(
+                Article::class.java.name +
+                        " must implement Parcelable or Serializable or must be an Enum."
+            )
         }
         return result
     }
@@ -28,14 +30,17 @@ data class ArticleFragmentArgs(
         @JvmStatic
         fun fromBundle(bundle: Bundle): ArticleFragmentArgs {
             bundle.setClassLoader(ArticleFragmentArgs::class.java.classLoader)
-            val __article : Article?
+            val __article: Article?
             if (bundle.containsKey("article")) {
                 if (Parcelable::class.java.isAssignableFrom(Article::class.java) ||
-                        Serializable::class.java.isAssignableFrom(Article::class.java)) {
+                    Serializable::class.java.isAssignableFrom(Article::class.java)
+                ) {
                     __article = bundle.get("article") as Article?
                 } else {
-                    throw UnsupportedOperationException(Article::class.java.name +
-                            " must implement Parcelable or Serializable or must be an Enum.")
+                    throw UnsupportedOperationException(
+                        Article::class.java.name +
+                                " must implement Parcelable or Serializable or must be an Enum."
+                    )
                 }
                 if (__article == null) {
                     throw IllegalArgumentException("Argument \"article\" is marked as non-null but was passed a null value.")

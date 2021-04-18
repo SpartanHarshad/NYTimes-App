@@ -35,14 +35,14 @@ class NewsHolder(val view: View, val onClickOfNews: OnClickOfNews):RecyclerView.
         view.apply {
             //tvNewsNo.text = "${position}."
             tvMostNewsTitle.text = articleItemEntity.title
-            tvMostNewsShortDesc.text = articleItemEntity.abstractt
+            tvBookMarkNewsShortDesc.text = articleItemEntity.abstractt
             tvMostUpdatedTime.text = "New York Times"
         }
 
         view.apply {
-            Glide.with(ivMostNewsImg)
+            Glide.with(ivBookMarkNewsImg)
                 .load(articleItemEntity.image_low)
-                .into(ivMostNewsImg)
+                .into(ivBookMarkNewsImg)
             ivMostForward.setOnClickListener {
                 onClickOfNews.forwardNews(articleItemEntity.url!!, BitMapCreator.ViewShot(view))
             }

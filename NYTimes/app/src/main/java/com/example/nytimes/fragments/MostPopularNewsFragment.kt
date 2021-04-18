@@ -82,10 +82,7 @@ class MostPopularNewsFragment : Fragment(), OnClickOfNews {
                 news.clear()
                 news.addAll(result.data!!)
                 newsAdapter.notifyDataSetChanged()
-
                 result is Resource.Loading && result.data.isNullOrEmpty()
-
-
             })
     }
 
@@ -138,15 +135,14 @@ class MostPopularNewsFragment : Fragment(), OnClickOfNews {
     fun forwardNewsOnSocialMedia(url: String, image: Bitmap?) {
 
         try {
-
             val intent = Intent(Intent.ACTION_SEND)
             intent.type = "image/*"
             intent.putExtra(Intent.EXTRA_STREAM, getBitmapFromView(image))
             startActivity(Intent.createChooser(intent, "Share Image"))
-
         } catch (e: Exception) {
             e.printStackTrace()
         }
+
 
         fun forwardNewsOnSocialMedia(url: String) {
 
@@ -162,6 +158,10 @@ class MostPopularNewsFragment : Fragment(), OnClickOfNews {
 
 
     }
+
+
+    }
+
 
     private fun getBitmapFromView(bmp: Bitmap?): Uri? {
         var bmpUri: Uri? = null
@@ -179,5 +179,4 @@ class MostPopularNewsFragment : Fragment(), OnClickOfNews {
         }
         return bmpUri
     }
-
 }

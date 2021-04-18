@@ -1,5 +1,6 @@
 package com.example.nytimes.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -16,10 +17,11 @@ import com.example.nytimes.local.ForYouDatabase
 import com.example.nytimes.repository.YouRepository
 import com.example.nytimes.viewmodels.ForViewModelProviderFactory
 import com.example.nytimes.views.MainActivity
+import com.example.nytimes.views.SettingActivity
 import kotlinx.android.synthetic.main.fragment_foryou.*
 
 
-class ForYouFragment:Fragment(R.layout.fragment_foryou) {
+class ForYouFragment : Fragment(R.layout.fragment_foryou) {
 
     lateinit var viewModel: ForYouViewModel
     lateinit var newsAdapter: ForYouAdapter
@@ -30,21 +32,25 @@ class ForYouFragment:Fragment(R.layout.fragment_foryou) {
 
         val youRepository = YouRepository(ForYouDatabase(requireContext()))
         val viewModelProviderFactory = ForViewModelProviderFactory(youRepository)
-        viewModel = ViewModelProvider(this, viewModelProviderFactory).get(ForYouViewModel::class.java)
-        //viewModel = (activity as MainActivity).viewModel
-
+        viewModel =
+            ViewModelProvider(this, viewModelProviderFactory).get(ForYouViewModel::class.java)
         setupRecyclerView()
+        btnSetting.setOnClickListener {
+            val intent = Intent(activity, SettingActivity::class.java)
+            startActivity(intent)
+        }
+
         newsAdapter.setOnItemClickListener {
-            val bundle=Bundle().apply {
+            val bundle = Bundle().apply {
                 putSerializable("article", it)
             }
             findNavController().navigate(
-                    R.id.action_forYouFragment_to_articleFragment2,bundle
+                R.id.action_forYouFragment_to_articleFragment2, bundle
             )
         }
 
         viewModel.foryouNews.observe(viewLifecycleOwner, Observer { response ->
-            when(response) {
+            when (response) {
                 is Resource.Success -> {
                     hideProgressBar()
                     response.data?.let { newsResponse ->

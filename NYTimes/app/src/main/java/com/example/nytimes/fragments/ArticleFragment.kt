@@ -16,17 +16,15 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_article.*
 
 class ArticleFragment : Fragment(R.layout.fragment_article) {
+
     lateinit var viewModel: ForYouViewModel
-//    lateinit var forYouAdapter: ForYouAdapter
-    // val foryouNews: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
     val args: ArticleFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val youRepository = YouRepository(ForYouDatabase(requireContext()))
         val viewModelProviderFactory = ForViewModelProviderFactory(youRepository)
-        viewModel =
-            ViewModelProvider(this, viewModelProviderFactory).get(ForYouViewModel::class.java)
+        viewModel = ViewModelProvider(this, viewModelProviderFactory).get(ForYouViewModel::class.java)
         //(activity as MainActivity).viewModel
         val article = args.article
         webView.apply {
@@ -38,11 +36,5 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
             viewModel.saveArticle(article)
             Snackbar.make(view, "Article saved", Snackbar.LENGTH_SHORT).show()
         }
-
-        // viewModel.getSavedNews().observe(viewLifecycleOwner, Observer { article->
-//            forYouAdapter.differ.submitList(article)
-        // })
-
     }
-
 }
