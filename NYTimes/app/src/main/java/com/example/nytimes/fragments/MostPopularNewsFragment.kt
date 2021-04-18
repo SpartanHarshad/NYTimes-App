@@ -160,9 +160,6 @@ class MostPopularNewsFragment : Fragment(), OnClickOfNews {
     }
 
 
-    }
-
-
     private fun getBitmapFromView(bmp: Bitmap?): Uri? {
         var bmpUri: Uri? = null
         try {
@@ -179,4 +176,5 @@ class MostPopularNewsFragment : Fragment(), OnClickOfNews {
         }
         return bmpUri
     }
+
 }
