@@ -9,8 +9,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
-        android:layout_margin="5dp">
+        android:layout_margin="5dp"
+        android:background="@color/white">
 
         <TextView
             android:id="@+id/tvNewsNo"
@@ -23,7 +23,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
-            android:id="@+id/clMostPopularNews"
+            android:id="@+id/llBookMarkNews"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -54,7 +54,7 @@
                     android:paddingRight="10dp">
 
                     <TextView
-                        android:id="@+id/tvMostNewsTitle"
+                        android:id="@+id/tvBookMarkNewsTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/font_chelt_bold"
@@ -66,7 +66,7 @@
                         android:id="@+id/tvBookMarkNewsShortDesc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/tvMostNewsTitle"
+                        android:layout_below="@id/tvBookMarkNewsTitle"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/font_chelt_light"
                         android:text="hello short desc"
@@ -99,53 +99,6 @@
             </LinearLayout>
 
         </LinearLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/clMostPopularNews">
-
-            <TextView
-                android:id="@+id/tvMostUpdatedTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:fontFamily="@font/font_chelt_light"
-                android:paddingLeft="10dp"
-                android:text="time"
-                android:textColor="@color/black"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/ivMostForward"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:paddingLeft="10dp"
-                android:paddingTop="10dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="10dp"
-                android:src="@drawable/ic_forward"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/ivMostSave"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:paddingLeft="10dp"
-                android:paddingTop="10dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="10dp"
-                android:src="@drawable/ic_bookmark"
-                app:layout_constraintRight_toLeftOf="@id/ivMostForward"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

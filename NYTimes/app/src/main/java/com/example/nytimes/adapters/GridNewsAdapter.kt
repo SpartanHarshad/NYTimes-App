@@ -9,7 +9,6 @@ import com.example.nytimes.R
 import com.example.nytimes.clickListeners.OnClickOfNews
 import com.example.nytimes.local.entity.ArticleItemEntity
 import kotlinx.android.synthetic.main.grid_news_item.view.*
-import kotlinx.android.synthetic.main.news_item_layout.view.ivMostNewsImg
 
 class GridNewsAdapter (val newsList:List<ArticleItemEntity>, val onClickOfNews: OnClickOfNews):
     RecyclerView.Adapter<GridNewsHolder>() {
