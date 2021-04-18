@@ -39,7 +39,7 @@ class MostPopularNewsFragment : Fragment(), OnClickOfNews {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val builder: StrictMode.VmPolicy.Builder =       StrictMode.VmPolicy.Builder()
+        val builder: StrictMode.VmPolicy.Builder = StrictMode.VmPolicy.Builder()
         StrictMode.setVmPolicy(builder.build())
 
     }
@@ -80,10 +80,7 @@ class MostPopularNewsFragment : Fragment(), OnClickOfNews {
                 news.clear()
                 news.addAll(result.data!!)
                 newsAdapter.notifyDataSetChanged()
-
                 result is Resource.Loading && result.data.isNullOrEmpty()
-
-
             })
     }
 
@@ -109,37 +106,21 @@ class MostPopularNewsFragment : Fragment(), OnClickOfNews {
     fun forwardNewsOnSocialMedia(url: String, image: Bitmap?) {
 
         try {
-
             val intent = Intent(Intent.ACTION_SEND)
             intent.type = "image/*"
             intent.putExtra(Intent.EXTRA_STREAM, getBitmapFromView(image))
             startActivity(Intent.createChooser(intent, "Share Image"))
-
         } catch (e: Exception) {
             e.printStackTrace()
         }
 
-    fun forwardNewsOnSocialMedia(url: String) {
-
-        val sendIntent: Intent = Intent().apply {
-            action = Intent.ACTION_SEND
-            putExtra(Intent.EXTRA_TEXT, url)
-            type = "text/plain"
-        }
-
-        val shareIntent = Intent.createChooser(sendIntent, "Forward")
-        /*startActivity(shareIntent)*/
     }
 
-
-
-
-
-}
     private fun getBitmapFromView(bmp: Bitmap?): Uri? {
         var bmpUri: Uri? = null
         try {
-            val file = File(activity?.externalCacheDir, System.currentTimeMillis().toString() + ".jpg")
+            val file =
+                File(activity?.externalCacheDir, System.currentTimeMillis().toString() + ".jpg")
 
             val out = FileOutputStream(file)
             bmp?.compress(Bitmap.CompressFormat.JPEG, 90, out)
@@ -151,5 +132,4 @@ class MostPopularNewsFragment : Fragment(), OnClickOfNews {
         }
         return bmpUri
     }
-
 }
