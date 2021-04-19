@@ -5,6 +5,7 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.os.StrictMode
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,6 +24,7 @@ import com.example.nytimes.util.Resource
 import com.example.nytimes.viewmodels.NewsViewModel
 import com.example.nytimes.worker.BOOKMARK_INSERT
 import com.example.nytimes.worker.BookmarkWork
+import com.google.firebase.auth.FirebaseAuth
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_most_popular_news.*
@@ -37,13 +39,18 @@ class MostPopularNewsFragment : Fragment(), OnClickOfNews {
     lateinit var newsAdapter: NewsAdapter
     val newsViewModel: NewsViewModel by viewModels()
     var news = mutableListOf<ArticleItemEntity>()
+    lateinit var User_Mail: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val firebaseAuth = FirebaseAuth.getInstance()
+        val user = firebaseAuth.getCurrentUser()
+        User_Mail = user!!.getEmail()!!
+        Log.d("Email", "onCreate: $User_Mail")
+
         val builder: StrictMode.VmPolicy.Builder = StrictMode.VmPolicy.Builder()
         StrictMode.setVmPolicy(builder.build())
-
     }
 
     override fun onCreateView(
@@ -109,7 +116,7 @@ class MostPopularNewsFragment : Fragment(), OnClickOfNews {
 
     override fun bookmarkNews(bookmark: ArticleItemEntity) {
         //replace the email with the user's email
-        val data = CreateBookmarkDto.createBookmark(bookmark, "genshin@gmail.com")
+        val data = CreateBookmarkDto.createBookmark(bookmark, User_Mail)
         val gson = Gson()
         val jsonBookmark = gson.toJson(data)
 

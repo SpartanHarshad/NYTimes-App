@@ -73,5 +73,4 @@ class BookmarkWork(context: Context, workerParams: WorkerParameters) :
         notificationManager.notify(1, builder.build())
     }
 
-
 }

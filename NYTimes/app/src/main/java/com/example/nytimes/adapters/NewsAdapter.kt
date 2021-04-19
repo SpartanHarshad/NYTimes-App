@@ -41,7 +41,7 @@ class NewsHolder(val view: View, val onClickOfNews: OnClickOfNews):RecyclerView.
 
         view.apply {
             Glide.with(ivBookMarkNewsImg)
-                .load(articleItemEntity.image_low)
+                .load(articleItemEntity.image_high)
                 .into(ivBookMarkNewsImg)
             ivMostForward.setOnClickListener {
                 onClickOfNews.forwardNews(articleItemEntity.url!!, BitMapCreator.ViewShot(view))
