@@ -13,10 +13,12 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
+import java.util.*
 
 class LoginActivity : AppCompatActivity() {
 
     val firebaseAuth = FirebaseAuth.getInstance()
+    lateinit var  EmailID: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -35,17 +37,17 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun Login() {
-        val Email: String = etLoginEmail.text.toString()
+        EmailID = etLoginEmail.text.toString()
         val password: String = etLoginPassword.text.toString()
-        Log.d("LOG", "Login: $Email  $password")
-        if (TextUtils.isEmpty(Email)) {
+        Log.d("LOG", "Login: $EmailID  $password")
+        if (TextUtils.isEmpty(EmailID)) {
             etLoginEmail.setError("Enter your email")
             return
         } else if (TextUtils.isEmpty(password)) {
             etLoginPassword.setError("Enter your password")
             return
         }
-        firebaseAuth.signInWithEmailAndPassword(Email, password).addOnCompleteListener(this,
+        firebaseAuth.signInWithEmailAndPassword(EmailID, password).addOnCompleteListener(this,
             OnCompleteListener<AuthResult?> { task ->
                 if (task.isSuccessful) {
                     Toast.makeText(

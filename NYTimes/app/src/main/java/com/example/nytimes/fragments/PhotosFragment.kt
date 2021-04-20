@@ -3,6 +3,7 @@ package com.example.nytimes.fragments
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,13 +13,19 @@ import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.work.*
 import com.example.nytimes.R
 import com.example.nytimes.adapters.GridNewsAdapter
 import com.example.nytimes.adapters.NewsAdapter
 import com.example.nytimes.clickListeners.OnClickOfNews
 import com.example.nytimes.local.entity.ArticleItemEntity
+import com.example.nytimes.local.entity_to_dto.CreateBookmarkDto
 import com.example.nytimes.util.Resource
 import com.example.nytimes.viewmodels.NewsViewModel
+import com.example.nytimes.worker.BOOKMARK_INSERT
+import com.example.nytimes.worker.BookmarkWork
+import com.google.firebase.auth.FirebaseAuth
+import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_magazine.*
 import kotlinx.android.synthetic.main.fragment_photos.*
@@ -29,9 +36,14 @@ class PhotosFragment : Fragment(), OnClickOfNews {
     lateinit var newsAdapter: GridNewsAdapter
     val newsViewModel: NewsViewModel by viewModels()
     var news = mutableListOf<ArticleItemEntity>()
+    lateinit var User_Mail: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val firebaseAuth = FirebaseAuth.getInstance()
+        val user = firebaseAuth.getCurrentUser()
+        User_Mail = user!!.getEmail()!!
+        Log.d("Email", "onCreate: $User_Mail")
     }
 
     override fun onCreateView(
@@ -88,7 +100,26 @@ class PhotosFragment : Fragment(), OnClickOfNews {
     }
 
     override fun bookmarkNews(bookmark: ArticleItemEntity) {
-        TODO("Not yet implemented")
+        val data = CreateBookmarkDto.createBookmark(bookmark, User_Mail)
+        val gson = Gson()
+        val jsonBookmark = gson.toJson(data)
+
+        val constraints = Constraints.Builder()
+        constraints.setRequiredNetworkType(NetworkType.CONNECTED)
+        constraints.setRequiresCharging(false)
+
+        val inputData = Data.Builder()
+        inputData.putString("data", jsonBookmark)
+        inputData.putInt("type", BOOKMARK_INSERT)
+
+        val work = OneTimeWorkRequest.Builder(BookmarkWork::class.java)
+        work.setConstraints(constraints.build())
+        work.setInputData(inputData.build())
+        work.addTag("book mark")
+
+        val workManager = context?.let { WorkManager.getInstance(it) }
+
+        workManager?.enqueue(work.build())
     }
 
     fun forwardNewsOnSocialMedia(url: String) {

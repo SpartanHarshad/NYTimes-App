@@ -114,6 +114,7 @@
                     android:background="#808080" />
 
                 <ImageView
+                    android:id="@+id/ivBooks"
                     android:layout_width="match_parent"
                     android:layout_height="400dp"
                     android:src="@drawable/ic_setting" />
