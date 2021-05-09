@@ -1,138 +1,134 @@
-# NYTimes-App Clones
+# NYTimes-App Clones (E-Commerce App)
 
-Below the Dependeny of our project We Used In Our App
+#### NY Times is a New York Times news App It provides news of New York City, world news.
 
-    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    //firebase
-    implementation 'androidx.wear:wear:1.0.0'
-    implementation 'com.google.firebase:firebase-auth:19.2.0'
-    compileOnly 'com.google.android.wearable:wearable:2.6.0'
-    def jetpack_version = "2.1.0"
-    def anko_version = '0.10.0'
-    def lifecycle_version = "2.3.1"
-    def arch_version = "2.1.0"
-    def retrofit_version = "2.9.0"
-    def coroutines = "1.1.1"
-    def kotlinCoroutineVersion = "1.4.1"
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.core:core-ktx:1.3.2'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+<img src=https://github.com/SpartanHarshad/NYTimes-App/blob/main/NYTimes/app/src/main/res/img/icon.png height="55px" />
+
+## Technologies
+* Kotlin
+* Glide 
+* Recycler View 
+* Intent
+* Coroutines
+* MVVM
+* WebView
+* Live Data
+* Retrofit
+* Navigation Components
+* Dagger Hilt
+* Paging
+* Spring boot
+* Work manager
+
+
+## Features
+* This news app displays the information of the latest news updates.
+* You can see section wise news.
+* Details about every news are are available in the app.
+
+## Screenshots
+
+|**latest News**|**For You**|**Sections**|
+|:---|:--|:--|
+|<img src=https://github.com/SpartanHarshad/NYTimes-App/blob/main/NYTimes/app/src/main/res/img/today_news.jpg height="500px" width="350px"/>|<img src=https://github.com/SpartanHarshad/NYTimes-App/blob/main/NYTimes/app/src/main/res/img/for_you.jpg height="500px" width="350px"/>|<img src=https://github.com/SpartanHarshad/NYTimes-App/blob/main/NYTimes/app/src/main/res/img/sections.jpg height="500px" width="350px"/>
+
+|**Registration**|**Forward News Card**|**World News**|
+|:--|:--|:--| 
+|<img src=https://github.com/SpartanHarshad/NYTimes-App/blob/main/NYTimes/app/src/main/res/img/registration.jpg height="500px" width="350px"/>|<img src=https://github.com/SpartanHarshad/NYTimes-App/blob/main/NYTimes/app/src/main/res/img/forward_newscard.jpg height="500px" width="350px"/>|<img src=https://github.com/SpartanHarshad/NYTimes-App/blob/main/NYTimes/app/src/main/res/img/world_news.jpg height="500px" width="350px"/>
+
+<br/><br/>
+
+<!--#Dependency 
+
+dependencies {
+
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    implementation 'com.google.android.material:material:1.4.0-alpha02'
-    // ViewModel
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
-    // LiveData
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
-    // Lifecycles only (without ViewModel or LiveData)
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
-    // Saved state module for ViewModel
-    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version"
-    // Jetpack Compose Integration for ViewModel
-    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha04"
-    // Annotation processor
-    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
-    // alternately - if using Java8, use the following instead of lifecycle-compiler
-    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
-    // optional - helpers for implementing LifecycleOwner in a Service
-    implementation "androidx.lifecycle:lifecycle-service:$lifecycle_version"
-    // optional - ProcessLifecycleOwner provides a lifecycle for the whole application process
-    implementation "androidx.lifecycle:lifecycle-process:$lifecycle_version"
-    // optional - ReactiveStreams support for LiveData
-    implementation "androidx.lifecycle:lifecycle-reactivestreams-ktx:$lifecycle_version"
-    // optional - Test helpers for LiveData
-    testImplementation "androidx.arch.core:core-testing:$arch_version"
-    // Jetpack Compose Integration for ViewModel
-    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha04"
-    // Annotation processor
-    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
-    // alternately - if using Java8, use the following instead of lifecycle-compiler
-    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
-    // optional - helpers for implementing LifecycleOwner in a Service
-    implementation "androidx.lifecycle:lifecycle-service:$lifecycle_version"
-    // optional - ProcessLifecycleOwner provides a lifecycle for the whole application process
-    implementation "androidx.lifecycle:lifecycle-process:$lifecycle_version"
-    // optional - ReactiveStreams support for LiveData
-    implementation "androidx.lifecycle:lifecycle-reactivestreams-ktx:$lifecycle_version"
-    // optional - Test helpers for LiveData
-    testImplementation "androidx.arch.core:core-testing:$arch_version"
-    //Coroutines
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutineVersion"
-    def room_version = "2.3.0-rc01"
-    implementation "androidx.room:room-runtime:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
-    // optional - Kotlin Extensions and Coroutines support for Room
-    implementation "androidx.room:room-ktx:$room_version"
-    // optional - Test helpers
-    testImplementation "androidx.room:room-testing:$room_version"
-    kapt "com.android.databinding:compiler:$jetpack_version"
-    //Anko
-    implementation "org.jetbrains.anko:anko-commons:$anko_version"
-    // Retrofit & OkHttp
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-    implementation "com.squareup.okhttp3:logging-interceptor:4.9.0"
-    testImplementation "com.android.support.test.espresso:espresso-core:3.0.2"
-    testImplementation "androidx.test.ext:junit-ktx:1.1.3-alpha05"
-    androidTestImplementation "androidx.test.ext:junit-ktx:1.1.3-alpha05"
-    androidTestImplementation "org.mockito:mockito-core:2.27.0"
-    testImplementation "org.mockito:mockito-core:2.27.0"
-    testImplementation "android.arch.core:core-testing:2.1.0"
-    testImplementation "com.squareup.okhttp3:mockwebserver:3.6.0"
-    implementation 'androidx.recyclerview:recyclerview:1.2.0'
-    implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'com.github.bumptech.glide:glide:4.12.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestCompile "android.arch.core:core-testing:1.1.1"
-    testImplementation 'org.robolectric:robolectric:4.5.1'
-    //glide dependencys
-    // Retrofit & OkHttp
-    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
-    // This library is used by retrofit internally to convert json-pojo and pojo-json
-    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
-    //This library is used to observe the API logs, Http status code and the API response
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.12.3'
-    // Navigation Components
-    implementation "androidx.navigation:navigation-fragment-ktx:2.3.5"
-    implementation "androidx.navigation:navigation-ui-ktx:2.3.5"
-    implementation 'com.github.bumptech.glide:glide:4.12.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
-    //dagger hilt
-    implementation "com.google.dagger:hilt-android:$hilt_version"
-    kapt "com.google.dagger:hilt-compiler:$hilt_version"
-    // jsoup HTML parser library @ https://jsoup.org/
-    implementation 'org.jsoup:jsoup:1.13.1'
-    implementation 'com.github.jumadeveloper:networkmanager:0.0.2'
-    implementation 'com.github.delight-im:Android-AdvancedWebView:v3.2.1'
-    def paging_version = '3.0.0-beta03'
-    implementation "androidx.paging:paging-runtime:$paging_version"
-    // alternatively - without Android dependencies for tests
-    testImplementation "androidx.paging:paging-common:$paging_version"
-    // optional - RxJava2 support
-    implementation "androidx.paging:paging-rxjava2:$paging_version"
-    // optional - RxJava3 support
-    implementation "androidx.paging:paging-rxjava3:$paging_version"
-    // optional - Guava ListenableFuture support
-    implementation "androidx.paging:paging-guava:$paging_version"
-    // Jetpack Compose Integration
-    implementation "androidx.paging:paging-compose:1.0.0-alpha08"
-    def work_version = "2.5.0"
-    // (Java only)
-    implementation "androidx.work:work-runtime:$work_version"
-    // Kotlin + coroutines
-    implementation "androidx.work:work-runtime-ktx:$work_version"
-    // optional - RxJava2 support
-    implementation "androidx.work:work-rxjava2:$work_version"
-    // optional - GCMNetworkManager support
-    implementation "androidx.work:work-gcm:$work_version"
-    // optional - Test helpers
-    androidTestImplementation "androidx.work:work-testing:$work_version"
-    // optional - Multiprocess support
-    implementation "androidx.work:work-multiprocess:$work_version"
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation 'com.github.swapnil1104:OtpEditText:1.0.2-rc'
+    implementation 'com.github.aabhasr1:OtpView:v1.1.2'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.github.ybq:Android-SpinKit:1.4.0'
+
+}
+
+#Screenshots
+
+![mydigital(2)](https://miro.medium.com/max/418/1*FB-u1A79smTlReyEobUMHQ.jpeg);
+![test1](https://miro.medium.com/max/418/1*SPmvr7NmA__BB2YdLOJgzg.jpeg);
+![test1](https://miro.medium.com/max/418/1*rJT7_0K5eGB_t0AewZJA2g.jpeg)
+![test1](https://miro.medium.com/max/418/1*EEMNorsZMNg8CX04Twxfug.jpeg);
+
+
+#Uses To Build Project
+
+Animation in Splash Screen.
+
+Password Toggle.
+
+WebView to Login With Facebook or Google.
+
+Glide.
+
+SavedInstance.
+
+Alert Dialog.
+
+Recycle View.
+
+Fragments.
+
+<!--# Music Player App
+
+###### Music Player application contains a list of songs.
+
+## Technologies
+* Java
+* Services
+* Content Provider
+
+## Features
+
+* The Music Player app displays a list of songs. With the help of Content Provider, all the songs from mobile device are provided to this music player app.
+* The app allows you to Play, Pause and Stop songs with the help of Services.
+* This app also provides the feature to shuffle and repeat songs.
+* As per the requirement, the songs from the app can be deleted.
+
+## Screenshots and description
+
+After opening the application, you will find the welcome screen that stays in for 2 seconds. Afer that you can see the main home screen of the application. It displays the songs
+from mobile device using content provider. 
+
+It consists of 4 fragments namely, "Home", "Songs", "Albums" and "Artists". It also contains a search view and menu button at the top right corner of the screen.
+
+|**Welcome screen**|**Main Home screen**|
+|:---|:--|
+|<img src=images/music_splash.jpeg height="500px" width="450px"/>|<img src=images/music_home.jpeg height="500px"/>|
+
+<br/><br/>
+
+The Home, Songs, Albums and Artists fragments contains its respective contents which is that the Home fragments displays all the songs present in the device. The Albums displays the list of all songs as per the albums name and the Artists fragment displays the songs based on the list of artists' name.
+
+|**Albums screen**|**Artists screen**|
+|:---|:--|
+|<img src=images/music_album.jpeg height="500px"/>|<img src=images/music_artists.jpeg height="500px"/>|
+
+<br/> <br/>
+
+The Songs fragment displays the list of all the songs with the song name. On click of the song, its respective Music Play screen appears and the service starts so song starts playing. 
+
+Using Services, user can play, pause & stop the song on click of play button. It provides the feature to shuffle the songs in the device and play it and if the user wants a song to play on repeat mode, user can click on repeat song option. It also consists of seek bar and it displays the duration of the current playing song. 
+
+|**SongsList screen**|**Music Play screen**|
+|:---|:--|
+|<img src=images/music_song_list.jpeg height="500px"/>|<img src=images/music_song_play.jpeg height="500px"/>|
+
+<br/> <br/>
+
+The user can search the songs as per their choice with the help of seach view option. The list of songs are filtered according to the search input. 
+The songs can be sorted based on the songs alphabets, date and size. It also provides the options to delete the song from the device. If the user wants to do it, they can click on the menu option at the end of the song and delete it.
+
+|**Search view**|**Sort songs**|**Delete songs**|
+|:---|:--|:--|
+|<img src=images/music_search.jpeg height="500px"/>|<img src=images/music_sort.jpeg height="500px"/>|<img src=images/music_delete.jpeg height="500px"/>-->
+
