@@ -6,6 +6,7 @@
 
 ## Technologies
 * Kotlin
+* Java
 * Glide 
 * Recycler View 
 * Intent
