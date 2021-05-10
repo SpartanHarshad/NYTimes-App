@@ -1,4 +1,4 @@
-# NYTimes-App Clones (E-Commerce App)
+# NYTimes-App Clones (News App)
 
 #### NY Times is a New York Times news App It provides news of New York City, world news.
 
