@@ -27,8 +27,9 @@
 * You can see section wise news.
 * Details about every news are are available in the app.
 
-## Screenshots
+<img src=https://github.com/SpartanHarshad/NYTimes-App/blob/main/NYTimes/app/src/main/res/img/NYTimes_Banner.jpg />
 
+## Screenshots
 |**latest News**|**For You**|**Sections**|
 |:---|:--|:--|
 |<img src=https://github.com/SpartanHarshad/NYTimes-App/blob/main/NYTimes/app/src/main/res/img/today_news.jpg height="500px" width="350px"/>|<img src=https://github.com/SpartanHarshad/NYTimes-App/blob/main/NYTimes/app/src/main/res/img/for_you.jpg height="500px" width="350px"/>|<img src=https://github.com/SpartanHarshad/NYTimes-App/blob/main/NYTimes/app/src/main/res/img/sections.jpg height="500px" width="350px"/>
